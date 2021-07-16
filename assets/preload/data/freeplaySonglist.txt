@@ -1,0 +1,3 @@
+Startup:fax:1
+Scan:fax:1
+Transmit:fax:1
