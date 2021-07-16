@@ -1,7 +1,7 @@
 # Friday Night Faxxin'
 
 
-https://user-images.githubusercontent.com/44733677/126001845-76826ea4-153f-48b2-8c24-cb601a4bcb00.mp4
+<!-- https://user-images.githubusercontent.com/44733677/126001845-76826ea4-153f-48b2-8c24-cb601a4bcb00.mp4 -->
 
 
 ![I_made_a](https://user-images.githubusercontent.com/44733677/126001594-22fac904-03a3-4992-a393-c1694abd20c9.gif)
