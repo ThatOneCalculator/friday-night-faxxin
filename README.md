@@ -1,6 +1,7 @@
 # Friday Night Faxxin'
 
-![preview](https://media.discordapp.net/attachments/840772392862220308/864632942712979466/I_made_a.gif)
+![I_made_a](https://user-images.githubusercontent.com/44733677/126001594-22fac904-03a3-4992-a393-c1694abd20c9.gif)
+
 
 #### Made with [KadeEngine](https://github.com/KadeDev/Kade-Engine)
 
