@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="FAX.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="FaxIdle0000" x="0" y="0" width="457" height="398" frameX="0" frameY="-8" frameWidth="457" frameHeight="409"/>
+	<SubTexture name="FaxIdle0001" x="0" y="0" width="457" height="398" frameX="0" frameY="-8" frameWidth="457" frameHeight="409"/>
+	<SubTexture name="FaxIdle0002" x="457" y="0" width="451" height="405" frameX="-3" frameY="-3" frameWidth="457" frameHeight="409"/>
+	<SubTexture name="FaxIdle0003" x="457" y="0" width="451" height="405" frameX="-3" frameY="-3" frameWidth="457" frameHeight="409"/>
+	<SubTexture name="FaxIdle0004" x="908" y="0" width="449" height="409" frameX="-4" frameY="0" frameWidth="457" frameHeight="409"/>
+	<SubTexture name="FaxIdle0005" x="908" y="0" width="449" height="409" frameX="-4" frameY="0" frameWidth="457" frameHeight="409"/>
+	<SubTexture name="FaxIdle0006" x="908" y="0" width="449" height="409" frameX="-4" frameY="0" frameWidth="457" frameHeight="409"/>
+	<SubTexture name="FaxIdle0007" x="908" y="0" width="449" height="409" frameX="-4" frameY="0" frameWidth="457" frameHeight="409"/>
+	<SubTexture name="FaxIdle0008" x="908" y="0" width="449" height="409" frameX="-4" frameY="0" frameWidth="457" frameHeight="409"/>
+	<SubTexture name="FaxIdle0009" x="908" y="0" width="449" height="409" frameX="-4" frameY="0" frameWidth="457" frameHeight="409"/>
+	<SubTexture name="FaxIdle0010" x="908" y="0" width="449" height="409" frameX="-4" frameY="0" frameWidth="457" frameHeight="409"/>
+	<SubTexture name="FaxIdle0011" x="908" y="0" width="449" height="409" frameX="-4" frameY="0" frameWidth="457" frameHeight="409"/>
+	<SubTexture name="FaxIdle0012" x="908" y="0" width="449" height="409" frameX="-4" frameY="0" frameWidth="457" frameHeight="409"/>
+	<SubTexture name="FaxIdle0013" x="908" y="0" width="449" height="409" frameX="-4" frameY="0" frameWidth="457" frameHeight="409"/>
+	<SubTexture name="FaxSingNoteDown0000" x="1357" y="0" width="575" height="291" frameX="0" frameY="-18" frameWidth="575" frameHeight="316"/>
+	<SubTexture name="FaxSingNoteDown0001" x="1357" y="0" width="575" height="291" frameX="0" frameY="-18" frameWidth="575" frameHeight="316"/>
+	<SubTexture name="FaxSingNoteDown0002" x="0" y="409" width="526" height="316" frameX="-27" frameY="0" frameWidth="575" frameHeight="316"/>
+	<SubTexture name="FaxSingNoteDown0003" x="0" y="409" width="526" height="316" frameX="-27" frameY="0" frameWidth="575" frameHeight="316"/>
+	<SubTexture name="FaxSingNoteDown0004" x="0" y="409" width="526" height="316" frameX="-27" frameY="0" frameWidth="575" frameHeight="316"/>
+	<SubTexture name="FaxSingNoteDown0005" x="0" y="409" width="526" height="316" frameX="-27" frameY="0" frameWidth="575" frameHeight="316"/>
+	<SubTexture name="FaxSingNoteDown0006" x="0" y="409" width="526" height="316" frameX="-27" frameY="0" frameWidth="575" frameHeight="316"/>
+	<SubTexture name="FaxSingNoteDown0007" x="0" y="409" width="526" height="316" frameX="-27" frameY="0" frameWidth="575" frameHeight="316"/>
+	<SubTexture name="FaxSingNoteDown0008" x="0" y="409" width="526" height="316" frameX="-27" frameY="0" frameWidth="575" frameHeight="316"/>
+	<SubTexture name="FaxSingNoteDown0009" x="0" y="409" width="526" height="316" frameX="-27" frameY="0" frameWidth="575" frameHeight="316"/>
+	<SubTexture name="FaxSingNoteDown0010" x="0" y="409" width="526" height="316" frameX="-27" frameY="0" frameWidth="575" frameHeight="316"/>
+	<SubTexture name="FaxSingNoteDown0011" x="0" y="409" width="526" height="316" frameX="-27" frameY="0" frameWidth="575" frameHeight="316"/>
+	<SubTexture name="FaxSingNoteDown0012" x="0" y="409" width="526" height="316" frameX="-27" frameY="0" frameWidth="575" frameHeight="316"/>
+	<SubTexture name="FaxSingNoteDown0013" x="0" y="409" width="526" height="316" frameX="-27" frameY="0" frameWidth="575" frameHeight="316"/>
+	<SubTexture name="FaxSingNoteDown0014" x="0" y="409" width="526" height="316" frameX="-27" frameY="0" frameWidth="575" frameHeight="316"/>
+	<SubTexture name="FaxSingNoteLeft0000" x="526" y="409" width="494" height="419" frameX="0" frameY="-8" frameWidth="494" frameHeight="430"/>
+	<SubTexture name="FaxSingNoteLeft0001" x="526" y="409" width="494" height="419" frameX="0" frameY="-8" frameWidth="494" frameHeight="430"/>
+	<SubTexture name="FaxSingNoteLeft0002" x="1020" y="409" width="467" height="430" frameX="-21" frameY="0" frameWidth="494" frameHeight="430"/>
+	<SubTexture name="FaxSingNoteLeft0003" x="1020" y="409" width="467" height="430" frameX="-21" frameY="0" frameWidth="494" frameHeight="430"/>
+	<SubTexture name="FaxSingNoteLeft0004" x="1020" y="409" width="467" height="430" frameX="-21" frameY="0" frameWidth="494" frameHeight="430"/>
+	<SubTexture name="FaxSingNoteLeft0005" x="1020" y="409" width="467" height="430" frameX="-21" frameY="0" frameWidth="494" frameHeight="430"/>
+	<SubTexture name="FaxSingNoteLeft0006" x="1020" y="409" width="467" height="430" frameX="-21" frameY="0" frameWidth="494" frameHeight="430"/>
+	<SubTexture name="FaxSingNoteLeft0007" x="1020" y="409" width="467" height="430" frameX="-21" frameY="0" frameWidth="494" frameHeight="430"/>
+	<SubTexture name="FaxSingNoteLeft0008" x="1020" y="409" width="467" height="430" frameX="-21" frameY="0" frameWidth="494" frameHeight="430"/>
+	<SubTexture name="FaxSingNoteLeft0009" x="1020" y="409" width="467" height="430" frameX="-21" frameY="0" frameWidth="494" frameHeight="430"/>
+	<SubTexture name="FaxSingNoteLeft0010" x="1020" y="409" width="467" height="430" frameX="-21" frameY="0" frameWidth="494" frameHeight="430"/>
+	<SubTexture name="FaxSingNoteLeft0011" x="1020" y="409" width="467" height="430" frameX="-21" frameY="0" frameWidth="494" frameHeight="430"/>
+	<SubTexture name="FaxSingNoteLeft0012" x="1020" y="409" width="467" height="430" frameX="-21" frameY="0" frameWidth="494" frameHeight="430"/>
+	<SubTexture name="FaxSingNoteLeft0013" x="1020" y="409" width="467" height="430" frameX="-21" frameY="0" frameWidth="494" frameHeight="430"/>
+	<SubTexture name="FaxSingNoteLeft0014" x="1020" y="409" width="467" height="430" frameX="-21" frameY="0" frameWidth="494" frameHeight="430"/>
+	<SubTexture name="FaxSingNoteRight0000" x="1487" y="409" width="390" height="356" frameX="-8" frameY="-1" frameWidth="399" frameHeight="358"/>
+	<SubTexture name="FaxSingNoteRight0001" x="1487" y="409" width="390" height="356" frameX="-8" frameY="-1" frameWidth="399" frameHeight="358"/>
+	<SubTexture name="FaxSingNoteRight0002" x="0" y="839" width="399" height="358"/>
+	<SubTexture name="FaxSingNoteRight0003" x="0" y="839" width="399" height="358"/>
+	<SubTexture name="FaxSingNoteRight0004" x="0" y="839" width="399" height="358"/>
+	<SubTexture name="FaxSingNoteRight0005" x="0" y="839" width="399" height="358"/>
+	<SubTexture name="FaxSingNoteRight0006" x="0" y="839" width="399" height="358"/>
+	<SubTexture name="FaxSingNoteRight0007" x="0" y="839" width="399" height="358"/>
+	<SubTexture name="FaxSingNoteRight0008" x="0" y="839" width="399" height="358"/>
+	<SubTexture name="FaxSingNoteRight0009" x="0" y="839" width="399" height="358"/>
+	<SubTexture name="FaxSingNoteRight0010" x="0" y="839" width="399" height="358"/>
+	<SubTexture name="FaxSingNoteRight0011" x="0" y="839" width="399" height="358"/>
+	<SubTexture name="FaxSingNoteRight0012" x="0" y="839" width="399" height="358"/>
+	<SubTexture name="FaxSingNoteRight0013" x="0" y="839" width="399" height="358"/>
+	<SubTexture name="FaxSingNoteRight0014" x="0" y="839" width="399" height="358"/>
+	<SubTexture name="FaxSingNoteUp0000" x="399" y="839" width="361" height="488" frameX="-17" frameY="0" frameWidth="392" frameHeight="488"/>
+	<SubTexture name="FaxSingNoteUp0001" x="399" y="839" width="361" height="488" frameX="-17" frameY="0" frameWidth="392" frameHeight="488"/>
+	<SubTexture name="FaxSingNoteUp0002" x="760" y="839" width="392" height="461" frameX="0" frameY="-19" frameWidth="392" frameHeight="488"/>
+	<SubTexture name="FaxSingNoteUp0003" x="760" y="839" width="392" height="461" frameX="0" frameY="-19" frameWidth="392" frameHeight="488"/>
+	<SubTexture name="FaxSingNoteUp0004" x="760" y="839" width="392" height="461" frameX="0" frameY="-19" frameWidth="392" frameHeight="488"/>
+	<SubTexture name="FaxSingNoteUp0005" x="760" y="839" width="392" height="461" frameX="0" frameY="-19" frameWidth="392" frameHeight="488"/>
+	<SubTexture name="FaxSingNoteUp0006" x="760" y="839" width="392" height="461" frameX="0" frameY="-19" frameWidth="392" frameHeight="488"/>
+	<SubTexture name="FaxSingNoteUp0007" x="760" y="839" width="392" height="461" frameX="0" frameY="-19" frameWidth="392" frameHeight="488"/>
+	<SubTexture name="FaxSingNoteUp0008" x="760" y="839" width="392" height="461" frameX="0" frameY="-19" frameWidth="392" frameHeight="488"/>
+	<SubTexture name="FaxSingNoteUp0009" x="760" y="839" width="392" height="461" frameX="0" frameY="-19" frameWidth="392" frameHeight="488"/>
+	<SubTexture name="FaxSingNoteUp0010" x="760" y="839" width="392" height="461" frameX="0" frameY="-19" frameWidth="392" frameHeight="488"/>
+	<SubTexture name="FaxSingNoteUp0011" x="760" y="839" width="392" height="461" frameX="0" frameY="-19" frameWidth="392" frameHeight="488"/>
+	<SubTexture name="FaxSingNoteUp0012" x="760" y="839" width="392" height="461" frameX="0" frameY="-19" frameWidth="392" frameHeight="488"/>
+	<SubTexture name="FaxSingNoteUp0013" x="760" y="839" width="392" height="461" frameX="0" frameY="-19" frameWidth="392" frameHeight="488"/>
+	<SubTexture name="FaxSingNoteUp0014" x="760" y="839" width="392" height="461" frameX="0" frameY="-19" frameWidth="392" frameHeight="488"/>
+</TextureAtlas>

@@ -1,0 +1,153 @@
+{
+	"animations": [
+		{
+			"anim": "idle",
+			"name": "FaxIdle",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"anim": "idle-loop",
+			"name": "FaxIdle",
+			"fps": 24,
+			"loop": true,
+			"indices": [],
+			"offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"anim": "singLEFT",
+			"name": "FaxSingNoteLeft",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				43,
+				7
+			]
+		},
+		{
+			"anim": "singUP",
+			"name": "FaxSingNoteUp",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-25,
+				63
+			]
+		},
+		{
+			"anim": "singDOWN",
+			"name": "FaxSingNoteDown",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				53,
+				-86
+			]
+		},
+		{
+			"anim": "singRIGHT",
+			"name": "FaxSingNoteRight",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-68,
+				-45
+			]
+		},
+		{
+			"anim": "singLEFT-loop",
+			"name": "FaxSingNoteLeft",
+			"fps": 24,
+			"loop": true,
+			"indices": [
+				1,
+				1,
+				2,
+				2
+			],
+			"offsets": [
+				43,
+				7
+			]
+		},
+		{
+			"anim": "singUP-loop",
+			"name": "FaxSingNoteUp",
+			"fps": 24,
+			"loop": true,
+			"indices": [
+				1,
+				1,
+				2,
+				2
+			],
+			"offsets": [
+				-25,
+				63
+			]
+		},
+		{
+			"anim": "singRIGHT-loop",
+			"name": "FaxSingNoteRight",
+			"fps": 24,
+			"loop": true,
+			"indices": [
+				1,
+				1,
+				2,
+				2
+			],
+			"offsets": [
+				-68,
+				-45
+			]
+		},
+		{
+			"anim": "singDOWN-loop",
+			"name": "FaxSingNoteDown",
+			"fps": 24,
+			"loop": true,
+			"indices": [
+				1,
+				1,
+				2,
+				2
+			],
+			"offsets": [
+				53,
+				-86
+			]
+		}
+	],
+	"image": "characters/FAX",
+	"scale": 1,
+	"sing_duration": 6.1,
+	"healthicon": "fax",
+	"position": [
+		48,
+		423
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"flip_x": false,
+	"no_antialiasing": false,
+	"healthbar_colors": [
+		77,
+		70,
+		70
+	]
+}
