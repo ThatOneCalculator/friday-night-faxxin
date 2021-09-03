@@ -565,7 +565,6 @@ class PlayState extends MusicBeatState
 
 						defaultCamZoom = 0.55;
 						var weekFolder = 'weekFax';
-
 						var xPos = -1000;
 						var yPos = -400;
 						
@@ -614,7 +613,7 @@ class PlayState extends MusicBeatState
 						}
 
 						// Clouds
-						var clouds:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprClouds,weekFolder));
+						var clouds:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprClouds), weekFolder);
 						clouds.antialiasing = true;
 						clouds.scrollFactor.set(0.2, 0.2);
 						clouds.active = false;
@@ -625,7 +624,7 @@ class PlayState extends MusicBeatState
 						// Buildings
 						if(SONG.song.toLowerCase() != 'transmit'){
 							// NOT TRANSMIT BUILDINGS
-							var buildings:FlxSprite = new FlxSprite(xPos, yPos-100).loadGraphic(Paths.image(sprBuildings,weekFolder));
+							var buildings:FlxSprite = new FlxSprite(xPos, yPos-100).loadGraphic(Paths.image(sprBuildings), weekFolder);
 							buildings.antialiasing = true;
 							buildings.scrollFactor.set(0.4, 0.4);
 							buildings.active = false;
@@ -634,7 +633,7 @@ class PlayState extends MusicBeatState
 							add(buildings);
 						}else if (SONG.song.toLowerCase() == 'transmit'){
 							// TRANSMIT BUILDINGS
-							var city:FlxSprite = new FlxSprite(xPos, yPos-100).loadGraphic(Paths.image('sng3_City',weekFolder));
+							var city:FlxSprite = new FlxSprite(xPos, yPos-100).loadGraphic(Paths.image('sng3_City'), weekFolder);
 							city.antialiasing = true;
 							city.scrollFactor.set(0.4, 0.4);
 							city.active = false;
@@ -648,7 +647,7 @@ class PlayState extends MusicBeatState
 
 							for (i in 0...5)
 							{
-								var buildings:FlxSprite = new FlxSprite(xPos, yPos-100).loadGraphic(Paths.image('sng3_buildings' + i, weekFolder));
+								var buildings:FlxSprite = new FlxSprite(xPos, yPos-100).loadGraphic(Paths.image('sng3_buildings' + i), weekFolder);
 								buildings.scrollFactor.set(0.4, 0.4);
 								buildings.visible = false;
 								buildings.setGraphicSize(Std.int(buildings.width * 1));
@@ -659,7 +658,7 @@ class PlayState extends MusicBeatState
 						}
 
 						// Main Office
-						var office:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprOffice,weekFolder));
+						var office:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprOffice), weekFolder);
 						office.antialiasing = true;
 						office.scrollFactor.set(0.9, 0.9);
 						office.active = false;
@@ -668,7 +667,7 @@ class PlayState extends MusicBeatState
 						add(office);
 
 						// BG FAX SHADOW
-						var shadowbf:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image('BGshadows',weekFolder));
+						var shadowbf:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image('BGshadows'), weekFolder);
 						shadowbf.antialiasing = true;
 						shadowbf.scrollFactor.set(1, 1);
 						shadowbf.active = false;
@@ -677,7 +676,7 @@ class PlayState extends MusicBeatState
 						add(shadowbf);
 
 						// GF WATERCOOLER SHADOW
-						var shadowgf:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image('BGshadows2',weekFolder));
+						var shadowgf:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image('BGshadows2'), weekFolder);
 						shadowgf.antialiasing = true;
 						shadowgf.scrollFactor.set(0.95, 0.95);
 						shadowgf.active = false;
@@ -687,7 +686,7 @@ class PlayState extends MusicBeatState
 
 						// Water Cooler
 						watercooler = new FlxSprite(1300, 50);
-						watercooler.frames = Paths.getSparrowAtlas('BGwaterCooler',weekFolder);
+						watercooler.frames = Paths.getSparrowAtlas('BGwaterCooler', weekFolder);
 						watercooler.animation.addByPrefix('bop', 'Water Cooler', 24, false);
 						watercooler.antialiasing = true;
 						watercooler.scrollFactor.set(0.95, 0.95);
@@ -698,7 +697,7 @@ class PlayState extends MusicBeatState
 						}
 
 						// Foreground Computer and Cubicle
-						var objects:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image('FGObjects',weekFolder));
+						var objects:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image('FGObjects'), weekFolder);
 						objects.antialiasing = true;
 						objects.scrollFactor.set(1.1, 1.1);
 						objects.active = false;
@@ -709,7 +708,7 @@ class PlayState extends MusicBeatState
 						// ============== FOREGROUND =================
 
 						// Vignette
-						vignette = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprVignette,weekFolder));
+						vignette = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprVignette), weekFolder);
 						vignette.antialiasing = true;
 						vignette.scrollFactor.set(0.9, 0.9);
 						vignette.active = false;
@@ -717,7 +716,7 @@ class PlayState extends MusicBeatState
 						vignette.updateHitbox();
 
 						// LIGHT
-						light = new FlxSprite(xPos, yPos+100).loadGraphic(Paths.image(sprLight,weekFolder));
+						light = new FlxSprite(xPos, yPos+100).loadGraphic(Paths.image(sprLight), weekFolder);
 						light.blend = BlendMode.ADD;
 						light.antialiasing = true;
 						light.scrollFactor.set(0.9, 0.9);
@@ -727,7 +726,7 @@ class PlayState extends MusicBeatState
 
 						// Overlay
 						if(showOverlay = true){
-							overlay = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprOverlay,weekFolder));
+							overlay = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprOverlay), weekFolder);
 							overlay.blend = overlayBlend;
 							overlay.antialiasing = true;
 							overlay.scrollFactor.set(0.9, 0.9);
