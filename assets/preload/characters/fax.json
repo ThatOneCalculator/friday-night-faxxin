@@ -129,6 +129,17 @@
 				53,
 				-86
 			]
+		},
+		{
+			"anim": "PaperLaser",
+			"name": "FaxPaperLaser",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				60,
+				221
+			]
 		}
 	],
 	"image": "characters/FAX",
