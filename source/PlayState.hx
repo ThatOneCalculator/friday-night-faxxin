@@ -577,6 +577,7 @@ class PlayState extends MusicBeatState
 						var overlayBlend = BlendMode.NORMAL;
 						var overlayAlpha = 0.1;
 
+						/*
 						// I could probably put this in a switch statement but whatever
 						if(SONG.song.toLowerCase() == 'startup'){
 							// STARTUP
@@ -611,6 +612,7 @@ class PlayState extends MusicBeatState
 							overlayBlend = BlendMode.HARDLIGHT;
 							overlayAlpha = 0.7;
 						}
+						*/
 
 						// Clouds
 						var clouds:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprClouds), weekFolder);
@@ -658,12 +660,8 @@ class PlayState extends MusicBeatState
 						}
 
 						// Main Office
-						var office:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprOffice), weekFolder);
-						office.antialiasing = true;
-						office.scrollFactor.set(0.9, 0.9);
-						office.active = false;
+						var office:BGSprite = new BGSprite(sprOffice, xPos, yPos, 0.9, 0.9);
 						office.setGraphicSize(Std.int(office.width * 1));
-						office.updateHitbox();
 						add(office);
 
 						// BG FAX SHADOW

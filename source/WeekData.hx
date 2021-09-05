@@ -44,7 +44,7 @@ class WeekData {
 		null,	//Week 4
 		null,	//Week 5
 		null,	//Week 6
-		'weekFax'
+		'weekFax' //Week Fax Machine
 	];
 
 	//The only use for this is to display a different name for the Week when you're on the score reset menu.
@@ -59,7 +59,7 @@ class WeekData {
 		null,	//Week 4
 		null,	//Week 5
 		null,	//Week 6
-		'weekFax'
+		"Spittin Fax"
 	];
 
 

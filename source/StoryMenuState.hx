@@ -46,7 +46,7 @@ class StoryMenuState extends MusicBeatState
 		['mom', 'bf', 'gf'],
 		['parents-christmas', 'bf', 'gf'],
 		['senpai', 'bf', 'gf'],
-		['fax', 'bf', 'gf'],
+		['fax', 'bf', 'gf']
 	];
 
 	//The week's name, displayed on top-right

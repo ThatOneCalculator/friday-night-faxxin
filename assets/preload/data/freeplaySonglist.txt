@@ -1,4 +1,1 @@
 Tutorial:gf:0xFF9271FD
-Startup:fax:0xFF9271FD
-Scan:fax:0xFF9271FD
-Transmit:fax:0xFF9271FD
