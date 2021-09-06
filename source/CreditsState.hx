@@ -24,6 +24,12 @@ class CreditsState extends MusicBeatState
 	private var iconArray:Array<AttachedSprite> = [];
 
 	private static var creditsStuff:Array<Dynamic> = [ //Name - Icon name - Description - Link - BG Color
+		['Fax Mod Team'],
+		['Plagueonic',		    'plagueonic',		    'Creator, Animator, Artist and Programmer',			'https://twitter.com/Plagueonic',	    0xFF660066],
+		['tincant',			    'tincant',		        'Co-Creator and Composer',			            	'https://twitter.com/tincant_',         0xFF242542],
+		['ThatOneCalculator',	'thatonecalculator',    'Charter and Additional Programmer',				'https://twitter.com/That1Calculator',	0xFF4498BD],
+		['SnubHero',			'snubhero',		        'Additional Artist and Concepts',		     		'https://twitter.com/snubhero',	        0xFF68AEF4],
+		[''],
 		['Psych Engine Team'],
 		['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',					'https://twitter.com/Shadow_Mario_',	0xFFFFDD33],
 		['RiverOaken',			'riveroaken',		'Main Artist/Animator of Psych Engine',				'https://twitter.com/river_oaken',		0xFFC30085],
@@ -59,7 +65,7 @@ class CreditsState extends MusicBeatState
 		for (i in 0...creditsStuff.length)
 		{
 			var isSelectable:Bool = !unselectableCheck(i);
-			var optionText:Alphabet = new Alphabet(0, 70 * i, creditsStuff[i][0], !isSelectable, false);
+			var optionText:Alphabet = new Alphabet(0, 30 * i, creditsStuff[i][0], !isSelectable, false);
 			optionText.isMenuItem = true;
 			optionText.screenCenter(X);
 			if(isSelectable) {
