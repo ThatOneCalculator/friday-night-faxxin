@@ -188,7 +188,7 @@ class PlayState extends MusicBeatState
 	var light:FlxSprite;
 	var showOverlay = false;
 	var overlay:FlxSprite;
-	var watercooler:FlxSprite;
+	var watercooler:BGSprite;
 	var transmitbuildings:FlxTypedGroup<FlxSprite>;
 
 	public var songScore:Int = 0;
@@ -560,8 +560,47 @@ class PlayState extends MusicBeatState
 					bg.antialiasing = false;
 					add(bg);
 				}
-			case 'startup' | 'scan' | 'transmit':
+			case 'startup':
 				curStage = 'office';
+				defaultCamZoom = 0.55;
+
+				var xPos = -1000;
+				var yPos = -400;
+
+				var sprClouds = 'sng1_BGSky';
+				var sprBuildings = 'sng12_BGbuildings';
+				var sprOffice = 'sng12_BGOfficeMain';
+				var sprVignette = 'sng12_FGVignette';
+				var sprLight = 'sng1_FGLighting_ADD';
+				showOverlay = false;
+				var sprOverlay = 'sng1_FGOverlay_NORM';
+				var overlayBlend = BlendMode.NORMAL;
+				var overlayAlpha = 1;
+
+				// Clouds
+				var clouds:FlxSprite = new BGSprite(sprClouds, xPos, yPos, 0.2, 0.2);
+				clouds.setGraphicSize(Std.int(clouds.width * 1));
+				clouds.updateHitbox();
+				add(clouds);	
+
+				// Main Office
+				var office:BGSprite = new BGSprite(sprOffice, xPos, yPos, 0.9, 0.9);
+				office.setGraphicSize(Std.int(office.width * 1));
+				office.updateHitbox();
+				add(office);
+
+				// Water Cooler
+				watercooler = new BGSprite('BGwaterCooler', 1300, 50, 0.95, 0.95, ['Water Cooler']);
+				watercooler.setGraphicSize(Std.int(watercooler.width * 1));
+				watercooler.updateHitbox();
+				add(watercooler);
+
+			case 'scan':
+				curStage = 'office';
+				defaultCamZoom = 0.55;
+			case 'transmit':
+				curStage = 'office';
+				defaultCamZoom = 0.55;
 
 						defaultCamZoom = 0.55;
 						var weekFolder = 'weekFax';
@@ -612,7 +651,7 @@ class PlayState extends MusicBeatState
 							overlayBlend = BlendMode.HARDLIGHT;
 							overlayAlpha = 0.7;
 						}
-						*/
+						
 
 						// Clouds
 						var clouds:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprClouds), weekFolder);
@@ -662,6 +701,7 @@ class PlayState extends MusicBeatState
 						// Main Office
 						var office:BGSprite = new BGSprite(sprOffice, xPos, yPos, 0.9, 0.9);
 						office.setGraphicSize(Std.int(office.width * 1));
+						office.updateHitbox();
 						add(office);
 
 						// BG FAX SHADOW
@@ -733,6 +773,7 @@ class PlayState extends MusicBeatState
 							overlay.setGraphicSize(Std.int(overlay.width * 1));
 							overlay.updateHitbox();
 						}
+						*/
 			default:
 				defaultCamZoom = 0.9;
 				curStage = 'stage';
@@ -808,6 +849,13 @@ class PlayState extends MusicBeatState
 				BF_Y += 220;
 				GF_X += 180;
 				GF_Y += 300;
+			case 'office':
+				BF_X += 230;
+				BF_Y += 15;
+				GF_X -= 30;
+				GF_Y -= 90;
+				DAD_X -= 120;
+				DAD_Y += 2;
 		}
 
 		gf = new Character(GF_X, GF_Y, gfVersion);
@@ -1361,6 +1409,8 @@ class PlayState extends MusicBeatState
 		
 						bottomBoppers.dance(true);
 						santa.dance(true);
+					case 'office':
+						watercooler.dance(true);
 				}
 
 				switch (swagCounter)
@@ -3717,23 +3767,9 @@ class PlayState extends MusicBeatState
 		switch (curStage)
 		{
 			case 'office':
-				if(FlxG.save.data.distractions){
-					watercooler.animation.play('bop', true);
 
-					if(curSong == 'transmit'){
-						if (curBeat % 4 == 0)
-							{
-								transmitbuildings.forEach(function(buildings:FlxSprite)
-								{
-									buildings.visible = false;
-								});
-			
-								curLight = FlxG.random.int(0, transmitbuildings.length - 1);
-			
-								transmitbuildings.members[curLight].visible = true;
-							}
-						}
-					}
+				// Do nothing for now
+				
 			case 'school':
 				if(!ClientPrefs.lowQuality) {
 					bgGirls.dance();

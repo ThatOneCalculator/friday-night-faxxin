@@ -12,7 +12,7 @@ class WeekData {
 	// I'd recommend setting your week as -99 or something that new vanilla weeks will probably never ever use
 	// null = Don't change week number, it follows the vanilla weeks number order
 	public static var weekNumber:Array<Dynamic> = [
-		null
+		1
 	];
 
 	//Tells which assets directory should it load
@@ -58,7 +58,8 @@ class WeekData {
 	public static function getWeekDirectory():String {
 		var value:String = loadDirectory[PlayState.storyWeek];
 		if(value == null) {
-			value = "week" + getCurrentWeekNumber();
+			//value = "week" + getCurrentWeekNumber();
+			value = "weekFax";
 		}
 		return value;
 	}

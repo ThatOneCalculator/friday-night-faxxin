@@ -71,6 +71,7 @@ class LoadingState extends MusicBeatState
 				checkLibrary("shared");
 
 				var directory:String = WeekData.getWeekDirectory();
+				//trace(directory);
 				checkLibrary(directory);
 
 				var fadeTime = 0.5;
