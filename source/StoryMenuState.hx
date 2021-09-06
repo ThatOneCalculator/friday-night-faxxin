@@ -22,26 +22,53 @@ using StringTools;
 
 class StoryMenuState extends MusicBeatState
 {
+<<<<<<< Updated upstream
 	var scoreText:FlxText;
 
 	var weekData:Array<Dynamic> = [
 		//['Tutorial'],
 		['Startup', 'Scan', 'Transmit']
+=======
+	// Wether you have to beat the previous week for playing this one
+	// Not recommended, as people usually download your mod for, you know,
+	// playing just the modded week then delete it.
+	// defaults to True
+	public static var weekUnlocked:Array<Bool> = [
+		true
+>>>>>>> Stashed changes
 	];
 	var curDifficulty:Int = 1;
 
 	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true, true];
 
 	var weekCharacters:Array<Dynamic> = [
+<<<<<<< Updated upstream
 		//['', 'bf', 'gf'],
+=======
+>>>>>>> Stashed changes
 		['fax', 'bf', 'gf']
 	];
 
 	var weekNames:Array<String> = [
+<<<<<<< Updated upstream
 		//"",
 		"Spittin'"
 	];
 
+=======
+		"Spittin'"
+	];
+
+	//Background asset name, the background files are stored on assets/preload/menubackgrounds/
+	var weekBackground:Array<String> = [
+		'office'
+	];
+	
+	var scoreText:FlxText;
+
+	private static var curDifficulty:Int = 1;
+
+>>>>>>> Stashed changes
 	var txtWeekTitle:FlxText;
 
 	var curWeek:Int = 0;

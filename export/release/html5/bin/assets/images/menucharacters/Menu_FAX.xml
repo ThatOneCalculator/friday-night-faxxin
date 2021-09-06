@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Menu_FAX.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Menu_FAX instance 10000" x="0" y="0" width="261" height="196" frameX="0" frameY="-3" frameWidth="261" frameHeight="200"/>
+	<SubTexture name="Menu_FAX instance 10001" x="0" y="0" width="261" height="196" frameX="0" frameY="-3" frameWidth="261" frameHeight="200"/>
+	<SubTexture name="Menu_FAX instance 10002" x="0" y="212" width="254" height="198" frameX="-4" frameY="-2" frameWidth="261" frameHeight="200"/>
+	<SubTexture name="Menu_FAX instance 10003" x="0" y="212" width="254" height="198" frameX="-4" frameY="-2" frameWidth="261" frameHeight="200"/>
+	<SubTexture name="Menu_FAX instance 10004" x="0" y="426" width="251" height="200" frameX="-6" frameY="0" frameWidth="261" frameHeight="200"/>
+	<SubTexture name="Menu_FAX instance 10005" x="0" y="426" width="251" height="200" frameX="-6" frameY="0" frameWidth="261" frameHeight="200"/>
+	<SubTexture name="Menu_FAX instance 10006" x="0" y="426" width="251" height="200" frameX="-6" frameY="0" frameWidth="261" frameHeight="200"/>
+	<SubTexture name="Menu_FAX instance 10007" x="0" y="426" width="251" height="200" frameX="-6" frameY="0" frameWidth="261" frameHeight="200"/>
+	<SubTexture name="Menu_FAX instance 10008" x="0" y="426" width="251" height="200" frameX="-6" frameY="0" frameWidth="261" frameHeight="200"/>
+	<SubTexture name="Menu_FAX instance 10009" x="0" y="426" width="251" height="200" frameX="-6" frameY="0" frameWidth="261" frameHeight="200"/>
+	<SubTexture name="Menu_FAX instance 10010" x="0" y="426" width="251" height="200" frameX="-6" frameY="0" frameWidth="261" frameHeight="200"/>
+	<SubTexture name="Menu_FAX instance 10011" x="0" y="426" width="251" height="200" frameX="-6" frameY="0" frameWidth="261" frameHeight="200"/>
+	<SubTexture name="Menu_FAX instance 10012" x="0" y="426" width="251" height="200" frameX="-6" frameY="0" frameWidth="261" frameHeight="200"/>
+	<SubTexture name="Menu_FAX instance 10013" x="0" y="426" width="251" height="200" frameX="-6" frameY="0" frameWidth="261" frameHeight="200"/>
+	<SubTexture name="Menu_FAX instance 10014" x="0" y="426" width="251" height="200" frameX="-6" frameY="0" frameWidth="261" frameHeight="200"/>
+</TextureAtlas>

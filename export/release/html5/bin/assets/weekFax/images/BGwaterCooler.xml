@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="BGwaterCooler.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Water Cooler instance 10000" x="0" y="0" width="411" height="647" frameX="0" frameY="-12" frameWidth="411" frameHeight="659"/>
+	<SubTexture name="Water Cooler instance 10001" x="0" y="0" width="411" height="647" frameX="0" frameY="-12" frameWidth="411" frameHeight="659"/>
+	<SubTexture name="Water Cooler instance 10002" x="427" y="0" width="401" height="654" frameX="-5" frameY="-5" frameWidth="411" frameHeight="659"/>
+	<SubTexture name="Water Cooler instance 10003" x="427" y="0" width="401" height="654" frameX="-5" frameY="-5" frameWidth="411" frameHeight="659"/>
+	<SubTexture name="Water Cooler instance 10004" x="0" y="670" width="396" height="659" frameX="-7" frameY="0" frameWidth="411" frameHeight="659"/>
+	<SubTexture name="Water Cooler instance 10005" x="0" y="670" width="396" height="659" frameX="-7" frameY="0" frameWidth="411" frameHeight="659"/>
+	<SubTexture name="Water Cooler instance 10006" x="412" y="670" width="396" height="659" frameX="-7" frameY="0" frameWidth="411" frameHeight="659"/>
+	<SubTexture name="Water Cooler instance 10007" x="412" y="670" width="396" height="659" frameX="-7" frameY="0" frameWidth="411" frameHeight="659"/>
+	<SubTexture name="Water Cooler instance 10008" x="412" y="670" width="396" height="659" frameX="-7" frameY="0" frameWidth="411" frameHeight="659"/>
+	<SubTexture name="Water Cooler instance 10009" x="412" y="670" width="396" height="659" frameX="-7" frameY="0" frameWidth="411" frameHeight="659"/>
+	<SubTexture name="Water Cooler instance 10010" x="412" y="670" width="396" height="659" frameX="-7" frameY="0" frameWidth="411" frameHeight="659"/>
+	<SubTexture name="Water Cooler instance 10011" x="412" y="670" width="396" height="659" frameX="-7" frameY="0" frameWidth="411" frameHeight="659"/>
+	<SubTexture name="Water Cooler instance 10012" x="412" y="670" width="396" height="659" frameX="-7" frameY="0" frameWidth="411" frameHeight="659"/>
+	<SubTexture name="Water Cooler instance 10013" x="412" y="670" width="396" height="659" frameX="-7" frameY="0" frameWidth="411" frameHeight="659"/>
+	<SubTexture name="Water Cooler instance 10014" x="412" y="670" width="396" height="659" frameX="-7" frameY="0" frameWidth="411" frameHeight="659"/>
+</TextureAtlas>

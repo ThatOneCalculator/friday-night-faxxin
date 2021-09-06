@@ -62,6 +62,7 @@ class LoadingState extends MusicBeatState
 				if (PlayState.SONG.needsVoices)
 					checkLoadSong(getVocalPath());
 				checkLibrary("shared");
+<<<<<<< Updated upstream
 				if (PlayState.storyWeek > 0){
 					if(PlayState.storyWeek == 1){
 						checkLibrary("weekFax");
@@ -72,6 +73,13 @@ class LoadingState extends MusicBeatState
 					checkLibrary("tutorial");
 				}
 				
+=======
+
+				var directory:String = WeekData.getWeekDirectory();
+				checkLibrary("weekFax");
+				//checkLibrary(directory);
+
+>>>>>>> Stashed changes
 				var fadeTime = 0.5;
 				FlxG.camera.fade(FlxG.camera.bgColor, fadeTime, true);
 				new FlxTimer().start(fadeTime + MIN_TIME, function(_) introComplete());
