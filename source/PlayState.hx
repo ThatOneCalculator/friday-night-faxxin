@@ -255,7 +255,7 @@ class PlayState extends MusicBeatState
 		persistentDraw = true;
 
 		if (SONG == null)
-			SONG = Song.loadFromJson('tutorial');
+			SONG = Song.loadFromJson('startup-hard');
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
@@ -287,7 +287,221 @@ class PlayState extends MusicBeatState
 		#end
 
 		switch (SONG.song.toLowerCase())
-		{
+		{	
+			case 'startup':
+				curStage = 'office';
+				defaultCamZoom = 0.55;
+
+				var xPos = -1000;
+				var yPos = -400;
+
+				var sprClouds = 'sng1_BGSky';
+				var sprBuildings = 'sng12_BGbuildings';
+				var sprOffice = 'sng12_BGOfficeMain';
+				var sprVignette = 'sng12_FGVignette';
+				var sprLight = 'sng1_FGLighting_ADD';
+				showOverlay = false;
+				var sprOverlay = 'sng1_FGOverlay_NORM';
+				var overlayBlend = BlendMode.NORMAL;
+				var overlayAlpha = 1;
+
+				// Clouds
+				var clouds:FlxSprite = new BGSprite(sprClouds, xPos, yPos, 0.2, 0.2);
+				clouds.setGraphicSize(Std.int(clouds.width * 1));
+				clouds.updateHitbox();
+				add(clouds);	
+
+				// Main Office
+				var office:BGSprite = new BGSprite(sprOffice, xPos, yPos, 0.9, 0.9);
+				office.setGraphicSize(Std.int(office.width * 1));
+				office.updateHitbox();
+				add(office);
+
+				// Water Cooler
+				watercooler = new BGSprite('BGwaterCooler', 1300, 50, 0.95, 0.95, ['Water Cooler']);
+				watercooler.setGraphicSize(Std.int(watercooler.width * 1));
+				watercooler.updateHitbox();
+				add(watercooler);
+
+			case 'scan':
+				curStage = 'office';
+				defaultCamZoom = 0.55;
+			case 'transmit':
+				curStage = 'office';
+				defaultCamZoom = 0.55;
+
+						defaultCamZoom = 0.55;
+						var weekFolder = 'weekFax';
+						var xPos = -1000;
+						var yPos = -400;
+						
+						var sprClouds = 'sng1_BGSky';
+						var sprBuildings = 'sng12_BGbuildings';
+						var sprOffice = 'sng12_BGOfficeMain';
+						var sprVignette = 'sng12_FGVignette';
+						var sprLight = 'sng1_FGLighting_ADD';
+						var sprOverlay = 'sng1_FGOverlay_NORM';
+						var overlayBlend = BlendMode.NORMAL;
+						var overlayAlpha = 0.1;
+
+						/*
+						// I could probably put this in a switch statement but whatever
+						if(SONG.song.toLowerCase() == 'startup'){
+							// STARTUP
+							sprClouds = 'sng1_BGSky';
+							sprBuildings = 'sng12_BGbuildings';
+							sprOffice = 'sng12_BGOfficeMain';
+							sprVignette = 'sng12_FGVignette';
+							sprLight = 'sng1_FGLighting_ADD';
+							showOverlay = false;
+							sprOverlay = 'sng1_FGOverlay_NORM';
+							overlayBlend = BlendMode.NORMAL;
+							overlayAlpha = 1;
+						}else if(SONG.song.toLowerCase() == 'scan'){
+							// SCAN
+							sprClouds = 'sng2_BGSky';
+							sprBuildings = 'sng12_BGbuildings';
+							sprOffice = 'sng12_BGOfficeMain';
+							sprVignette = 'sng12_FGVignette';
+							sprLight = 'sng2_FGLighting_ADD';
+							showOverlay = true;
+							sprOverlay = 'sng2_FGOverlay_MULT';
+							overlayBlend = BlendMode.MULTIPLY;
+							overlayAlpha = 1;
+						}else if(SONG.song.toLowerCase() == 'transmit'){
+							sprClouds = 'sng3_BGSky';
+							sprBuildings = 'sng12_BGbuildings';
+							sprOffice = 'sng3_BGOfficeMain';
+							sprVignette = 'sng3_FGVignette';
+							sprLight = 'sng3_FGLighting_ADD';
+							showOverlay = true;
+							sprOverlay = 'sng3_FGOverlay_MULT';
+							overlayBlend = BlendMode.HARDLIGHT;
+							overlayAlpha = 0.7;
+						}
+						
+
+						// Clouds
+						var clouds:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprClouds), weekFolder);
+						clouds.antialiasing = true;
+						clouds.scrollFactor.set(0.2, 0.2);
+						clouds.active = false;
+						clouds.setGraphicSize(Std.int(clouds.width * 1));
+						clouds.updateHitbox();
+						add(clouds);
+
+						// Buildings
+						if(SONG.song.toLowerCase() != 'transmit'){
+							// NOT TRANSMIT BUILDINGS
+							var buildings:FlxSprite = new FlxSprite(xPos, yPos-100).loadGraphic(Paths.image(sprBuildings), weekFolder);
+							buildings.antialiasing = true;
+							buildings.scrollFactor.set(0.4, 0.4);
+							buildings.active = false;
+							buildings.setGraphicSize(Std.int(buildings.width * 1));
+							buildings.updateHitbox();
+							add(buildings);
+						}else if (SONG.song.toLowerCase() == 'transmit'){
+							// TRANSMIT BUILDINGS
+							var city:FlxSprite = new FlxSprite(xPos, yPos-100).loadGraphic(Paths.image('sng3_City'), weekFolder);
+							city.antialiasing = true;
+							city.scrollFactor.set(0.4, 0.4);
+							city.active = false;
+							city.setGraphicSize(Std.int(city.width * 1));
+							city.updateHitbox();
+							add(city);
+							transmitbuildings = new FlxTypedGroup<FlxSprite>();
+							if(FlxG.save.data.distractions){
+								add(transmitbuildings);
+							}
+
+							for (i in 0...5)
+							{
+								var buildings:FlxSprite = new FlxSprite(xPos, yPos-100).loadGraphic(Paths.image('sng3_buildings' + i), weekFolder);
+								buildings.scrollFactor.set(0.4, 0.4);
+								buildings.visible = false;
+								buildings.setGraphicSize(Std.int(buildings.width * 1));
+								buildings.updateHitbox();
+								buildings.antialiasing = true;
+								transmitbuildings.add(buildings);
+							}
+						}
+
+						// Main Office
+						var office:BGSprite = new BGSprite(sprOffice, xPos, yPos, 0.9, 0.9);
+						office.setGraphicSize(Std.int(office.width * 1));
+						office.updateHitbox();
+						add(office);
+
+						// BG FAX SHADOW
+						var shadowbf:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image('BGshadows'), weekFolder);
+						shadowbf.antialiasing = true;
+						shadowbf.scrollFactor.set(1, 1);
+						shadowbf.active = false;
+						shadowbf.setGraphicSize(Std.int(shadowbf.width * 1));
+						shadowbf.updateHitbox();
+						add(shadowbf);
+
+						// GF WATERCOOLER SHADOW
+						var shadowgf:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image('BGshadows2'), weekFolder);
+						shadowgf.antialiasing = true;
+						shadowgf.scrollFactor.set(0.95, 0.95);
+						shadowgf.active = false;
+						shadowgf.setGraphicSize(Std.int(shadowgf.width * 1));
+						shadowgf.updateHitbox();
+						add(shadowgf);
+
+						// Water Cooler
+						watercooler = new FlxSprite(1300, 50);
+						watercooler.frames = Paths.getSparrowAtlas('BGwaterCooler', weekFolder);
+						watercooler.animation.addByPrefix('bop', 'Water Cooler', 24, false);
+						watercooler.antialiasing = true;
+						watercooler.scrollFactor.set(0.95, 0.95);
+						watercooler.setGraphicSize(Std.int(watercooler.width * 1));
+						watercooler.updateHitbox();
+						if(FlxG.save.data.distractions){
+							add(watercooler);
+						}
+
+						// Foreground Computer and Cubicle
+						var objects:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image('FGObjects'), weekFolder);
+						objects.antialiasing = true;
+						objects.scrollFactor.set(1.1, 1.1);
+						objects.active = false;
+						objects.setGraphicSize(Std.int(objects.width * 1));
+						objects.updateHitbox();
+						add(objects);
+						
+						// ============== FOREGROUND =================
+
+						// Vignette
+						vignette = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprVignette), weekFolder);
+						vignette.antialiasing = true;
+						vignette.scrollFactor.set(0.9, 0.9);
+						vignette.active = false;
+						vignette.setGraphicSize(Std.int(vignette.width * 1));
+						vignette.updateHitbox();
+
+						// LIGHT
+						light = new FlxSprite(xPos, yPos+100).loadGraphic(Paths.image(sprLight), weekFolder);
+						light.blend = BlendMode.ADD;
+						light.antialiasing = true;
+						light.scrollFactor.set(0.9, 0.9);
+						light.active = false;
+						light.setGraphicSize(Std.int(light.width * 1));
+						light.updateHitbox();
+
+						// Overlay
+						if(showOverlay = true){
+							overlay = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprOverlay), weekFolder);
+							overlay.blend = overlayBlend;
+							overlay.antialiasing = true;
+							overlay.scrollFactor.set(0.9, 0.9);
+							overlay.active = false;
+							overlay.alpha = overlayAlpha;
+							overlay.setGraphicSize(Std.int(overlay.width * 1));
+							overlay.updateHitbox();
+						}
+						*/
 			case 'spookeez' | 'south' | 'monster':
 				curStage = 'spooky';
 
@@ -560,220 +774,6 @@ class PlayState extends MusicBeatState
 					bg.antialiasing = false;
 					add(bg);
 				}
-			case 'startup':
-				curStage = 'office';
-				defaultCamZoom = 0.55;
-
-				var xPos = -1000;
-				var yPos = -400;
-
-				var sprClouds = 'sng1_BGSky';
-				var sprBuildings = 'sng12_BGbuildings';
-				var sprOffice = 'sng12_BGOfficeMain';
-				var sprVignette = 'sng12_FGVignette';
-				var sprLight = 'sng1_FGLighting_ADD';
-				showOverlay = false;
-				var sprOverlay = 'sng1_FGOverlay_NORM';
-				var overlayBlend = BlendMode.NORMAL;
-				var overlayAlpha = 1;
-
-				// Clouds
-				var clouds:FlxSprite = new BGSprite(sprClouds, xPos, yPos, 0.2, 0.2);
-				clouds.setGraphicSize(Std.int(clouds.width * 1));
-				clouds.updateHitbox();
-				add(clouds);	
-
-				// Main Office
-				var office:BGSprite = new BGSprite(sprOffice, xPos, yPos, 0.9, 0.9);
-				office.setGraphicSize(Std.int(office.width * 1));
-				office.updateHitbox();
-				add(office);
-
-				// Water Cooler
-				watercooler = new BGSprite('BGwaterCooler', 1300, 50, 0.95, 0.95, ['Water Cooler']);
-				watercooler.setGraphicSize(Std.int(watercooler.width * 1));
-				watercooler.updateHitbox();
-				add(watercooler);
-
-			case 'scan':
-				curStage = 'office';
-				defaultCamZoom = 0.55;
-			case 'transmit':
-				curStage = 'office';
-				defaultCamZoom = 0.55;
-
-						defaultCamZoom = 0.55;
-						var weekFolder = 'weekFax';
-						var xPos = -1000;
-						var yPos = -400;
-						
-						var sprClouds = 'sng1_BGSky';
-						var sprBuildings = 'sng12_BGbuildings';
-						var sprOffice = 'sng12_BGOfficeMain';
-						var sprVignette = 'sng12_FGVignette';
-						var sprLight = 'sng1_FGLighting_ADD';
-						var sprOverlay = 'sng1_FGOverlay_NORM';
-						var overlayBlend = BlendMode.NORMAL;
-						var overlayAlpha = 0.1;
-
-						/*
-						// I could probably put this in a switch statement but whatever
-						if(SONG.song.toLowerCase() == 'startup'){
-							// STARTUP
-							sprClouds = 'sng1_BGSky';
-							sprBuildings = 'sng12_BGbuildings';
-							sprOffice = 'sng12_BGOfficeMain';
-							sprVignette = 'sng12_FGVignette';
-							sprLight = 'sng1_FGLighting_ADD';
-							showOverlay = false;
-							sprOverlay = 'sng1_FGOverlay_NORM';
-							overlayBlend = BlendMode.NORMAL;
-							overlayAlpha = 1;
-						}else if(SONG.song.toLowerCase() == 'scan'){
-							// SCAN
-							sprClouds = 'sng2_BGSky';
-							sprBuildings = 'sng12_BGbuildings';
-							sprOffice = 'sng12_BGOfficeMain';
-							sprVignette = 'sng12_FGVignette';
-							sprLight = 'sng2_FGLighting_ADD';
-							showOverlay = true;
-							sprOverlay = 'sng2_FGOverlay_MULT';
-							overlayBlend = BlendMode.MULTIPLY;
-							overlayAlpha = 1;
-						}else if(SONG.song.toLowerCase() == 'transmit'){
-							sprClouds = 'sng3_BGSky';
-							sprBuildings = 'sng12_BGbuildings';
-							sprOffice = 'sng3_BGOfficeMain';
-							sprVignette = 'sng3_FGVignette';
-							sprLight = 'sng3_FGLighting_ADD';
-							showOverlay = true;
-							sprOverlay = 'sng3_FGOverlay_MULT';
-							overlayBlend = BlendMode.HARDLIGHT;
-							overlayAlpha = 0.7;
-						}
-						
-
-						// Clouds
-						var clouds:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprClouds), weekFolder);
-						clouds.antialiasing = true;
-						clouds.scrollFactor.set(0.2, 0.2);
-						clouds.active = false;
-						clouds.setGraphicSize(Std.int(clouds.width * 1));
-						clouds.updateHitbox();
-						add(clouds);
-
-						// Buildings
-						if(SONG.song.toLowerCase() != 'transmit'){
-							// NOT TRANSMIT BUILDINGS
-							var buildings:FlxSprite = new FlxSprite(xPos, yPos-100).loadGraphic(Paths.image(sprBuildings), weekFolder);
-							buildings.antialiasing = true;
-							buildings.scrollFactor.set(0.4, 0.4);
-							buildings.active = false;
-							buildings.setGraphicSize(Std.int(buildings.width * 1));
-							buildings.updateHitbox();
-							add(buildings);
-						}else if (SONG.song.toLowerCase() == 'transmit'){
-							// TRANSMIT BUILDINGS
-							var city:FlxSprite = new FlxSprite(xPos, yPos-100).loadGraphic(Paths.image('sng3_City'), weekFolder);
-							city.antialiasing = true;
-							city.scrollFactor.set(0.4, 0.4);
-							city.active = false;
-							city.setGraphicSize(Std.int(city.width * 1));
-							city.updateHitbox();
-							add(city);
-							transmitbuildings = new FlxTypedGroup<FlxSprite>();
-							if(FlxG.save.data.distractions){
-								add(transmitbuildings);
-							}
-
-							for (i in 0...5)
-							{
-								var buildings:FlxSprite = new FlxSprite(xPos, yPos-100).loadGraphic(Paths.image('sng3_buildings' + i), weekFolder);
-								buildings.scrollFactor.set(0.4, 0.4);
-								buildings.visible = false;
-								buildings.setGraphicSize(Std.int(buildings.width * 1));
-								buildings.updateHitbox();
-								buildings.antialiasing = true;
-								transmitbuildings.add(buildings);
-							}
-						}
-
-						// Main Office
-						var office:BGSprite = new BGSprite(sprOffice, xPos, yPos, 0.9, 0.9);
-						office.setGraphicSize(Std.int(office.width * 1));
-						office.updateHitbox();
-						add(office);
-
-						// BG FAX SHADOW
-						var shadowbf:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image('BGshadows'), weekFolder);
-						shadowbf.antialiasing = true;
-						shadowbf.scrollFactor.set(1, 1);
-						shadowbf.active = false;
-						shadowbf.setGraphicSize(Std.int(shadowbf.width * 1));
-						shadowbf.updateHitbox();
-						add(shadowbf);
-
-						// GF WATERCOOLER SHADOW
-						var shadowgf:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image('BGshadows2'), weekFolder);
-						shadowgf.antialiasing = true;
-						shadowgf.scrollFactor.set(0.95, 0.95);
-						shadowgf.active = false;
-						shadowgf.setGraphicSize(Std.int(shadowgf.width * 1));
-						shadowgf.updateHitbox();
-						add(shadowgf);
-
-						// Water Cooler
-						watercooler = new FlxSprite(1300, 50);
-						watercooler.frames = Paths.getSparrowAtlas('BGwaterCooler', weekFolder);
-						watercooler.animation.addByPrefix('bop', 'Water Cooler', 24, false);
-						watercooler.antialiasing = true;
-						watercooler.scrollFactor.set(0.95, 0.95);
-						watercooler.setGraphicSize(Std.int(watercooler.width * 1));
-						watercooler.updateHitbox();
-						if(FlxG.save.data.distractions){
-							add(watercooler);
-						}
-
-						// Foreground Computer and Cubicle
-						var objects:FlxSprite = new FlxSprite(xPos, yPos).loadGraphic(Paths.image('FGObjects'), weekFolder);
-						objects.antialiasing = true;
-						objects.scrollFactor.set(1.1, 1.1);
-						objects.active = false;
-						objects.setGraphicSize(Std.int(objects.width * 1));
-						objects.updateHitbox();
-						add(objects);
-						
-						// ============== FOREGROUND =================
-
-						// Vignette
-						vignette = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprVignette), weekFolder);
-						vignette.antialiasing = true;
-						vignette.scrollFactor.set(0.9, 0.9);
-						vignette.active = false;
-						vignette.setGraphicSize(Std.int(vignette.width * 1));
-						vignette.updateHitbox();
-
-						// LIGHT
-						light = new FlxSprite(xPos, yPos+100).loadGraphic(Paths.image(sprLight), weekFolder);
-						light.blend = BlendMode.ADD;
-						light.antialiasing = true;
-						light.scrollFactor.set(0.9, 0.9);
-						light.active = false;
-						light.setGraphicSize(Std.int(light.width * 1));
-						light.updateHitbox();
-
-						// Overlay
-						if(showOverlay = true){
-							overlay = new FlxSprite(xPos, yPos).loadGraphic(Paths.image(sprOverlay), weekFolder);
-							overlay.blend = overlayBlend;
-							overlay.antialiasing = true;
-							overlay.scrollFactor.set(0.9, 0.9);
-							overlay.active = false;
-							overlay.alpha = overlayAlpha;
-							overlay.setGraphicSize(Std.int(overlay.width * 1));
-							overlay.updateHitbox();
-						}
-						*/
 			default:
 				defaultCamZoom = 0.9;
 				curStage = 'stage';

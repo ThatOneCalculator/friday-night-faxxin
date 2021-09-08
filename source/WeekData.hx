@@ -12,14 +12,13 @@ class WeekData {
 	// I'd recommend setting your week as -99 or something that new vanilla weeks will probably never ever use
 	// null = Don't change week number, it follows the vanilla weeks number order
 	public static var weekNumber:Array<Dynamic> = [
-		1
+		null
 	];
 
 	//Tells which assets directory should it load
 	//Reminder that you have to add the directories on Project.xml too or they won't be compiled!!!
 	//Just copy week6/week6_high mentions and rename it to whatever your week will be named
 	//It ain't that hard, i guess
-
 	//Oh yeah, quick reminder that files inside the folder that ends with _high are only loaded
 	//if you have the Low Quality option disabled on "Preferences"
 	public static var loadDirectory:Array<String> = [
@@ -31,7 +30,7 @@ class WeekData {
 
 	//Edit: This now also messes with Discord Rich Presence, so it's kind of relevant.
 	public static var weekResetName:Array<String> = [
-		"Spittin Fax"
+		"Fax"
 	];
 
 
@@ -58,8 +57,7 @@ class WeekData {
 	public static function getWeekDirectory():String {
 		var value:String = loadDirectory[PlayState.storyWeek];
 		if(value == null) {
-			//value = "week" + getCurrentWeekNumber();
-			value = "weekFax";
+			value = "week" + getCurrentWeekNumber();
 		}
 		return value;
 	}

@@ -42,9 +42,9 @@ class LoadingState extends MusicBeatState
 	var loadBar:FlxSprite;
 	override function create()
 	{
-		var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xffcaff4d);
+		var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xff58EBAB);
 		add(bg);
-		funkay = new FlxSprite(0, 0).loadGraphic(Paths.getPath('images/funkay.png', IMAGE));
+		funkay = new FlxSprite(0, 0).loadGraphic(Paths.getPath('images/loadin_fax.png', IMAGE));
 		funkay.setGraphicSize(0, FlxG.height);
 		funkay.updateHitbox();
 		funkay.antialiasing = ClientPrefs.globalAntialiasing;
@@ -69,11 +69,12 @@ class LoadingState extends MusicBeatState
 						checkLoadSong(getVocalPath());
 				}
 				checkLibrary("shared");
-
 				var directory:String = WeekData.getWeekDirectory();
-				//trace(directory);
 				checkLibrary(directory);
-
+				
+				FlxG.log.add("WEEK:" + PlayState.storyWeek);
+				FlxG.log.add(directory);
+			
 				var fadeTime = 0.5;
 				FlxG.camera.fade(FlxG.camera.bgColor, fadeTime, true);
 				new FlxTimer().start(fadeTime + MIN_TIME, function(_) introComplete());
@@ -161,7 +162,7 @@ class LoadingState extends MusicBeatState
 		if (PlayState.SONG != null) {
 			loaded = isSoundLoaded(getSongPath())
 				&& (!PlayState.SONG.needsVoices || isSoundLoaded(getVocalPath()))
-				&& isLibraryLoaded("shared") && isLibraryLoaded(directory);
+				&& isLibraryLoaded("shared") && isLibraryLoaded(directory); //directory
 		}
 		
 		if (!loaded)
