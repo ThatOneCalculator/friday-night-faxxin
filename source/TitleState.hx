@@ -368,7 +368,7 @@ class TitleState extends MusicBeatState
 		if(!closedState) {
 			switch (curBeat)
 			{
-			case 1:
+			case 2:
 				createCoolText(['Plagueonic']);
 			// credTextShit.visible = true;
 			case 4:

@@ -288,13 +288,14 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.song.toLowerCase())
 		{	
-			case 'startup':
+			case 'startup' | 'scan' | 'transmit':
 				curStage = 'office';
 				defaultCamZoom = 0.55;
 
 				var xPos = -1000;
 				var yPos = -400;
 
+				var weekFolder = 'weekFax';
 				var sprClouds = 'sng1_BGSky';
 				var sprBuildings = 'sng12_BGbuildings';
 				var sprOffice = 'sng12_BGOfficeMain';
@@ -303,27 +304,84 @@ class PlayState extends MusicBeatState
 				showOverlay = false;
 				var sprOverlay = 'sng1_FGOverlay_NORM';
 				var overlayBlend = BlendMode.NORMAL;
-				var overlayAlpha = 1;
+				var overlayAlpha = 0.0;
+
+
+				switch(SONG.song.toLowerCase()){
+					case 'startup':
+						// STARTUP
+						sprClouds = 'sng1_BGSky';
+						sprBuildings = 'sng12_City';
+						sprOffice = 'sng12_BGOfficeMain';
+						sprVignette = 'sng12_FGVignette';
+						sprLight = 'sng1_FGLighting_ADD';
+						showOverlay = false;
+						sprOverlay = 'sng1_FGOverlay_NORM';
+						overlayBlend = BlendMode.NORMAL;
+						overlayAlpha = 1;
+					case 'scan':
+						// SCAN
+						sprClouds = 'sng2_BGSky';
+						sprBuildings = 'sng12_City';
+						sprOffice = 'sng12_BGOfficeMain';
+						sprVignette = 'sng12_FGVignette';
+						sprLight = 'sng2_FGLighting_ADD';
+						showOverlay = true;
+						sprOverlay = 'sng2_FGOverlay_MULT';
+						overlayBlend = BlendMode.MULTIPLY;
+						overlayAlpha = 1;
+					case 'transmit':
+						sprClouds = 'sng3_BGSky';
+						sprBuildings = 'sng3_City';
+						sprOffice = 'sng3_BGOfficeMain';
+						sprVignette = 'sng3_FGVignette';
+						sprLight = 'sng3_FGLighting_ADD';
+						showOverlay = true;
+						sprOverlay = 'sng3_FGOverlay_MULT';
+						overlayBlend = BlendMode.HARDLIGHT;
+						overlayAlpha = 0.7;
+				}
+
 
 				// Clouds
-				var clouds:FlxSprite = new BGSprite(sprClouds, xPos, yPos, 0.2, 0.2);
+				var clouds:BGSprite = new BGSprite(weekFolder + '/' + sprClouds, xPos, yPos, 0.2, 0.2);
 				clouds.setGraphicSize(Std.int(clouds.width * 1));
 				clouds.updateHitbox();
-				add(clouds);	
+				add(clouds);
+
+				// Buildings
+				var buildings:BGSprite = new BGSprite(weekFolder + '/' + sprBuildings, xPos, yPos-100, 0.4, 0.4);
+				buildings.setGraphicSize(Std.int(buildings.width * 1));
+				buildings.updateHitbox();
+				add(buildings);	
 
 				// Main Office
-				var office:BGSprite = new BGSprite(sprOffice, xPos, yPos, 0.9, 0.9);
+				var office:BGSprite = new BGSprite(weekFolder + '/' + sprOffice, xPos, yPos, 0.9, 0.9);
 				office.setGraphicSize(Std.int(office.width * 1));
 				office.updateHitbox();
 				add(office);
 
+				// BG Fax Shadow
+				var shadowbf:BGSprite = new BGSprite(weekFolder + '/BGshadows', xPos, yPos, 1, 1);
+				shadowbf.setGraphicSize(Std.int(shadowbf.width * 1));
+				shadowbf.updateHitbox();
+				add(shadowbf);
+
+				// GF Shadow
+				var shadowgf:BGSprite = new BGSprite(weekFolder + '/BGshadows2', xPos, yPos, 0.95, 0.95);
+				shadowgf.setGraphicSize(Std.int(shadowgf.width * 1));
+				shadowgf.updateHitbox();
+				add(shadowgf);
+
 				// Water Cooler
-				watercooler = new BGSprite('BGwaterCooler', 1300, 50, 0.95, 0.95, ['Water Cooler']);
+				watercooler = new BGSprite(weekFolder + '/BGwaterCooler', 1300, 50, 0.95, 0.95, ['Water Cooler']);
 				watercooler.setGraphicSize(Std.int(watercooler.width * 1));
 				watercooler.updateHitbox();
 				add(watercooler);
 
-			case 'scan':
+				// Foreground Computer and Cubicle
+				
+			/*case 'scan':
 				curStage = 'office';
 				defaultCamZoom = 0.55;
 			case 'transmit':
