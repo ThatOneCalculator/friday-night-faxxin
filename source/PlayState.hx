@@ -826,8 +826,8 @@ class PlayState extends MusicBeatState
 		if (curStage == 'limo')
 			add(limo);
 
-		add(dadGroup);
 		add(boyfriendGroup);
+		add(dadGroup);
 
 		foregroundGroup = new FlxTypedGroup<FlxSprite>();
 		add(foregroundGroup);
@@ -2648,6 +2648,10 @@ class PlayState extends MusicBeatState
 				}
 				char.playAnim(value1, true);
 				char.specialAnim = true;
+			
+			case 'Play Sound':
+				trace('Sound to play: ' + value1);
+				FlxG.sound.play(Paths.sound(value1));
 
 			case 'Camera Follow Pos':
 				var val1:Float = Std.parseFloat(value1);
