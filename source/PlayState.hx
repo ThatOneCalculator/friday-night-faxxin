@@ -192,7 +192,9 @@ class PlayState extends MusicBeatState
 	var overlay:BGSprite;
 	var watercooler:BGSprite;
 	var transmitLights:FlxTypedGroup<BGSprite>;
-	var transmitPapers:FlxTypedGroup<BGSprite>;
+	var transmitPapers:BGSprite; // was FlxTypedGroup<BGSprite>
+	var objects:BGSprite;
+	var shadowgf:BGSprite;
 	var officeAlpha = 1.0;
 	//var paperworkHell:BGSprite; 
 	var paperworkHell1:BGSprite;
@@ -389,15 +391,17 @@ class PlayState extends MusicBeatState
 
 				// Paperwork Hell
 				if(SONG.song.toLowerCase() == 'transmit'){
-					var paperworkhellscrollspd = 2.5;
+					var paperworkhellscrollspd = 2.2;
 
-					paperworkHell1 = new BGSprite('weekFax/paperworkHellBG', xPos, -1000, paperworkhellscrollspd, paperworkhellscrollspd);
+					paperworkHell1 = new BGSprite('weekFax/paperworkHellBG', xPos, 1000, paperworkhellscrollspd, paperworkhellscrollspd);
 					paperworkHell1.setGraphicSize(Std.int(paperworkHell1.width * 1));
+					paperworkHell1.x = xPos-100;
 					paperworkHell1.visible = false;
 					add(paperworkHell1);
 
 					paperworkHell2 = new BGSprite('weekFax/paperworkHellBG', xPos, paperworkHell1.height, paperworkhellscrollspd, paperworkhellscrollspd);
 					paperworkHell2.setGraphicSize(Std.int(paperworkHell2.width * 1));
+					paperworkHell2.x = paperworkHell1.x;
 					paperworkHell2.visible = false;
 					add(paperworkHell2);
 				}
@@ -409,7 +413,7 @@ class PlayState extends MusicBeatState
 				add(shadowbf);
 
 				// GF Shadow
-				var shadowgf:BGSprite = new BGSprite(weekFolder + '/BGshadows2', xPos, yPos, 0.95, 0.95);
+				shadowgf = new BGSprite(weekFolder + '/BGshadows2', xPos, yPos, 0.95, 0.95);
 				shadowgf.setGraphicSize(Std.int(shadowgf.width * 1));
 				shadowgf.alpha = officeAlpha;
 				shadowgf.updateHitbox();
@@ -421,7 +425,7 @@ class PlayState extends MusicBeatState
 				add(watercooler);
 				
 				// Cubicle and PC
-				var objects:BGSprite = new BGSprite(weekFolder + '/FGObjects', xPos, yPos, 1.1, 1.1);
+				objects = new BGSprite(weekFolder + '/FGObjects', xPos, yPos, 1.1, 1.1);
 				objects.setGraphicSize(Std.int(objects.width * 1));
 				objects.alpha = officeAlpha;
 				objects.updateHitbox();
@@ -429,8 +433,6 @@ class PlayState extends MusicBeatState
 
 
 				// FOREGROUND ///////////////////////////////////////////////////////////////////////////////
-				
-
 				// Vignette
 				vignette = new BGSprite(weekFolder + '/' + sprVignette, xPos, yPos, 0.9, 0.9);
 				vignette.setGraphicSize(Std.int(vignette.width * 1));
@@ -450,20 +452,6 @@ class PlayState extends MusicBeatState
 				overlay.blend = overlayBlend;
 				overlay.updateHitbox();
 				
-				// PAPER ////////////////////////////////////////////////////////////////////////////////
-				
-				transmitPapers = new FlxTypedGroup<BGSprite>();
-				for (i in 0...4)
-					{
-						var paper:BGSprite = new BGSprite(weekFolder + '/Papers/PaperPart' + i, FlxG.width/2, FlxG.height, ['PapersPart' + i]);
-						paper.animation.addByPrefix('GetReadyPaper', 'PapersPart' + i, 24, false);
-						paper.visible = false;
-						paper.setGraphicSize(Std.int(paper.width * 0.6));
-						paper.updateHitbox();
-						paper.x = FlxG.width/2;
-						paper.scrollFactor.set();
-						transmitPapers.add(paper);
-					}
 				
 			case 'spookeez' | 'south' | 'monster':
 				curStage = 'spooky';
@@ -935,7 +923,20 @@ class PlayState extends MusicBeatState
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
 		add(grpNoteSplashes);
-		add(transmitPapers);
+
+		// TRANSITION PAPER ////////////////////////////////////////////////////////////////////////////////
+		if(SONG.song.toLowerCase() == 'transmit'){
+			transmitPapers = new BGSprite('weekFax/Papers/PapersSmallerVersion', 0, 0, ['paper cover screen']);
+			transmitPapers.animation.addByPrefix('GetReadyPaper', 'paper cover screen', 24, false);
+			transmitPapers.visible = false;
+			transmitPapers.setGraphicSize(Std.int(transmitPapers.width * 1.25));
+			transmitPapers.updateHitbox();
+			transmitPapers.x = -350;
+			transmitPapers.y = -500;
+			transmitPapers.scrollFactor.set();
+			transmitPapers.animation.pause();
+			add(transmitPapers);
+		}
 
 		var splash:NoteSplash = new NoteSplash(100, 100, 0);
 		grpNoteSplashes.add(splash);
@@ -2030,19 +2031,25 @@ class PlayState extends MusicBeatState
 
 
 					// SCREEN TRANSITION PAPER BULLSHIT ///////////////////////
+					if(transmitPapers.animation.finished){
+							transmitPapers.visible = false;
+					}
 					
-					transmitPapers.forEach(function(paper:BGSprite){
-						if(paper.animation.finished){
-							paper.visible = false;
-						}
-					});
-					
-
-
 					var scrollamount = -15;
 					paperworkHell1.y += scrollamount;
 					paperworkHell2.y += scrollamount;
 
+					//Boyfriend hit by fax anim
+					if(dad.animation.curAnim.name == 'PaperLaser' && dad.animation.curAnim.curFrame == 19){
+						boyfriend.playAnim('hurt', true);
+						boyfriend.specialAnim = true;
+					}
+
+					// Papers dodge animation
+					if(transmitPapers.animation.curAnim.curFrame == 37){
+						boyfriend.playAnim('dodge', true);
+						boyfriend.specialAnim = true;
+					}
 					// Scrolling Paper Bullshit //////////
 					var greater,lesser;
 					if(paperworkHell1.y > paperworkHell2.y){
@@ -2817,18 +2824,31 @@ class PlayState extends MusicBeatState
 						}
 
 				}
-			case 'Transmit Stage Change':
+			case 'Transmit Transition':
 				dad.playAnim('PaperLaser', true);
 				dad.specialAnim = true;
-				FlxG.sound.play(Paths.sound('paperlasernoise'));
+				FlxG.sound.play(Paths.sound('faxnoise'));
 
-				transmitPapers.forEach(function(paper:BGSprite)
-				{
-					paper.visible = true;
-					paper.animation.play('GetReadyPaper', true);
-					paper.x = FlxG.camera.x;
-					paper.y = FlxG.camera.y;
-				});
+				// TransmitPapers
+				transmitPapers.visible = true;
+				transmitPapers.animation.play('GetReadyPaper', true);
+
+				camFollow.x = 700;
+				isCameraOnForcedPos = true;
+				
+			case 'Transmit BG Change':
+				gf.visible = false;
+				officeAlpha = 0;
+				overlay.visible = false;
+				watercooler.visible = false;
+				objects.visible = false;
+				shadowgf.visible = false;
+				light.visible = false;
+				vignette.visible = false;
+
+				// Paperwork hell bg
+				paperworkHell1.visible = true;
+				paperworkHell2.visible = true;
 
 		}
 		if(!onLua) {

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="PapersSmallerVersion.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="paper cover screen instance 10000" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10001" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10002" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10003" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10004" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10005" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10006" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10007" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10008" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10009" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10010" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10011" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10012" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10013" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10014" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10015" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10016" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10017" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10018" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10019" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10020" x="0" y="0" width="80" height="69" frameX="-745" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10021" x="96" y="0" width="175" height="190" frameX="-650" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10022" x="287" y="0" width="448" height="218" frameX="-650" frameY="-659" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10023" x="751" y="0" width="600" height="230" frameX="-498" frameY="-647" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10024" x="1367" y="0" width="582" height="269" frameX="-498" frameY="-647" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10025" x="1965" y="0" width="720" height="327" frameX="-360" frameY="-589" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10026" x="2701" y="0" width="690" height="365" frameX="-360" frameY="-589" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10027" x="3407" y="0" width="679" height="432" frameX="-371" frameY="-561" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10028" x="0" y="448" width="653" height="633" frameX="-371" frameY="-360" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10029" x="669" y="448" width="653" height="633" frameX="-371" frameY="-360" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10030" x="1338" y="448" width="750" height="696" frameX="-371" frameY="-360" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10031" x="2104" y="448" width="834" height="781" frameX="-345" frameY="-275" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10032" x="2954" y="448" width="884" height="781" frameX="-345" frameY="-275" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10033" x="2954" y="448" width="884" height="781" frameX="-345" frameY="-275" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10034" x="0" y="1245" width="1101" height="1031" frameX="-128" frameY="-198" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10035" x="1117" y="1245" width="1390" height="1031" frameX="-128" frameY="-198" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10036" x="2523" y="1245" width="1390" height="1041" frameX="-128" frameY="-188" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10037" x="2523" y="1245" width="1390" height="1041" frameX="-128" frameY="-188" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10038" x="2523" y="1245" width="1390" height="1041" frameX="-128" frameY="-188" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10039" x="2523" y="1245" width="1390" height="1041" frameX="-128" frameY="-188" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10040" x="0" y="2302" width="1442" height="1117" frameX="-76" frameY="-188" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10041" x="1458" y="2302" width="1422" height="1161" frameX="-76" frameY="-144" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10042" x="0" y="3479" width="1416" height="984" frameX="-82" frameY="-144" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10043" x="1432" y="3479" width="1526" height="1187" frameX="-82" frameY="-64" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10044" x="0" y="4682" width="1608" height="1327"/>
+	<SubTexture name="paper cover screen instance 10045" x="1624" y="4682" width="1167" height="1327" frameX="0" frameY="0" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10046" x="2807" y="4682" width="1067" height="1327" frameX="-100" frameY="0" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10047" x="0" y="0" width="80" height="69" frameX="-748" frameY="-633" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10048" x="0" y="0" width="80" height="69" frameX="-748" frameY="-633" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10049" x="0" y="0" width="80" height="69" frameX="-748" frameY="-633" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10050" x="0" y="0" width="80" height="69" frameX="-748" frameY="-633" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10051" x="0" y="0" width="80" height="69" frameX="-748" frameY="-633" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10052" x="0" y="0" width="80" height="69" frameX="-748" frameY="-633" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10053" x="0" y="0" width="80" height="69" frameX="-748" frameY="-633" frameWidth="1608" frameHeight="1327"/>
+	<SubTexture name="paper cover screen instance 10054" x="0" y="0" width="80" height="69" frameX="-748" frameY="-633" frameWidth="1608" frameHeight="1327"/>
+</TextureAtlas>
