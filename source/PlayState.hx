@@ -14,6 +14,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.FlxSubState;
+import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.effects.FlxTrail;
 import flixel.addons.effects.FlxTrailArea;
@@ -26,6 +27,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
+import flixel.system.FlxAssets;
 import flixel.system.FlxSound;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
@@ -184,12 +186,17 @@ class PlayState extends MusicBeatState
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 	var bgGhouls:BGSprite;
 
-	var vignette:FlxSprite;
-	var light:FlxSprite;
+	var vignette:BGSprite;
+	var light:BGSprite;
 	var showOverlay = false;
-	var overlay:FlxSprite;
+	var overlay:BGSprite;
 	var watercooler:BGSprite;
 	var transmitLights:FlxTypedGroup<BGSprite>;
+	var transmitPapers:FlxTypedGroup<BGSprite>;
+	var officeAlpha = 1.0;
+	//var paperworkHell:BGSprite; 
+	var paperworkHell1:BGSprite;
+	var paperworkHell2:BGSprite;
 
 	public var songScore:Int = 0;
 	public var songHits:Int = 0;
@@ -349,12 +356,14 @@ class PlayState extends MusicBeatState
 				// Clouds
 				var clouds:BGSprite = new BGSprite(weekFolder + '/' + sprClouds, xPos, yPos, 0.2, 0.2);
 				clouds.setGraphicSize(Std.int(clouds.width * 1));
+				clouds.alpha = officeAlpha;
 				clouds.updateHitbox();
 				add(clouds);
 
 				// Buildings
 				var buildings:BGSprite = new BGSprite(weekFolder + '/' + sprBuildings, xPos, yPos-100, 0.4, 0.4);
 				buildings.setGraphicSize(Std.int(buildings.width * 1));
+				buildings.alpha = officeAlpha;
 				buildings.updateHitbox();
 				add(buildings);	
 
@@ -367,14 +376,31 @@ class PlayState extends MusicBeatState
 						var light:BGSprite = new BGSprite(weekFolder + '/TransmitWindows/sng3_buildings' + i, xPos, yPos-100, 0.4, 0.4);
 						light.visible = false;
 						light.updateHitbox();
+						light.alpha = officeAlpha;
 						transmitLights.add(light);
 					}
 				}
 				// Main Office
 				var office:BGSprite = new BGSprite(weekFolder + '/' + sprOffice, xPos, yPos, 0.9, 0.9);
 				office.setGraphicSize(Std.int(office.width * 1));
+				office.alpha = officeAlpha;
 				office.updateHitbox();
 				add(office);
+
+				// Paperwork Hell
+				if(SONG.song.toLowerCase() == 'transmit'){
+					var paperworkhellscrollspd = 2.5;
+
+					paperworkHell1 = new BGSprite('weekFax/paperworkHellBG', xPos, -1000, paperworkhellscrollspd, paperworkhellscrollspd);
+					paperworkHell1.setGraphicSize(Std.int(paperworkHell1.width * 1));
+					paperworkHell1.visible = false;
+					add(paperworkHell1);
+
+					paperworkHell2 = new BGSprite('weekFax/paperworkHellBG', xPos, paperworkHell1.height, paperworkhellscrollspd, paperworkhellscrollspd);
+					paperworkHell2.setGraphicSize(Std.int(paperworkHell2.width * 1));
+					paperworkHell2.visible = false;
+					add(paperworkHell2);
+				}
 
 				// BG Fax Shadow
 				var shadowbf:BGSprite = new BGSprite(weekFolder + '/BGshadows', xPos, yPos, 1, 1);
@@ -385,20 +411,25 @@ class PlayState extends MusicBeatState
 				// GF Shadow
 				var shadowgf:BGSprite = new BGSprite(weekFolder + '/BGshadows2', xPos, yPos, 0.95, 0.95);
 				shadowgf.setGraphicSize(Std.int(shadowgf.width * 1));
+				shadowgf.alpha = officeAlpha;
 				shadowgf.updateHitbox();
 				add(shadowgf);
 
 				// Water Cooler
 				watercooler = new BGSprite(weekFolder + '/BGwaterCooler', 1300, 50, 0.95, 0.95, ['Water Cooler']);
+				watercooler.alpha = officeAlpha;
 				add(watercooler);
 				
+				// Cubicle and PC
 				var objects:BGSprite = new BGSprite(weekFolder + '/FGObjects', xPos, yPos, 1.1, 1.1);
 				objects.setGraphicSize(Std.int(objects.width * 1));
+				objects.alpha = officeAlpha;
 				objects.updateHitbox();
 				add(objects);
 
+
 				// FOREGROUND ///////////////////////////////////////////////////////////////////////////////
-				// Cubicle and PC
+				
 
 				// Vignette
 				vignette = new BGSprite(weekFolder + '/' + sprVignette, xPos, yPos, 0.9, 0.9);
@@ -408,19 +439,31 @@ class PlayState extends MusicBeatState
 				// Light
 				light = new BGSprite(weekFolder + '/' + sprLight, xPos, yPos+100, 0.9, 0.9);
 				light.setGraphicSize(Std.int(light.width * 1));
+				light.alpha = officeAlpha;
 				light.blend = BlendMode.ADD;
 				light.updateHitbox();
 
 				// Overlay
 				overlay = new BGSprite(weekFolder + '/' + sprOverlay, xPos, yPos, 0.9, 0.9);
 				overlay.setGraphicSize(Std.int(overlay.width * 1));
-				overlay.alpha = overlayAlpha;
+				overlay.alpha = overlayAlpha*officeAlpha;
 				overlay.blend = overlayBlend;
 				overlay.updateHitbox();
 				
-
-
-
+				// PAPER ////////////////////////////////////////////////////////////////////////////////
+				
+				transmitPapers = new FlxTypedGroup<BGSprite>();
+				for (i in 0...4)
+					{
+						var paper:BGSprite = new BGSprite(weekFolder + '/Papers/PaperPart' + i, FlxG.width/2, FlxG.height, ['PapersPart' + i]);
+						paper.animation.addByPrefix('GetReadyPaper', 'PapersPart' + i, 24, false);
+						paper.visible = false;
+						paper.setGraphicSize(Std.int(paper.width * 0.6));
+						paper.updateHitbox();
+						paper.x = FlxG.width/2;
+						paper.scrollFactor.set();
+						transmitPapers.add(paper);
+					}
 				
 			case 'spookeez' | 'south' | 'monster':
 				curStage = 'spooky';
@@ -782,6 +825,7 @@ class PlayState extends MusicBeatState
 		gf.x += gf.positionArray[0];
 		gf.y += gf.positionArray[1];
 		gf.scrollFactor.set(0.95, 0.95);
+		gf.alpha = officeAlpha;
 		gfGroup.add(gf);
 
 		dad = new Character(DAD_X, DAD_Y, SONG.player2);
@@ -891,6 +935,7 @@ class PlayState extends MusicBeatState
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
 		add(grpNoteSplashes);
+		add(transmitPapers);
 
 		var splash:NoteSplash = new NoteSplash(100, 100, 0);
 		grpNoteSplashes.add(splash);
@@ -978,6 +1023,7 @@ class PlayState extends MusicBeatState
 		}
 
 		strumLineNotes.cameras = [camHUD];
+		transmitPapers.cameras = [camHUD];
 		grpNoteSplashes.cameras = [camHUD];
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
@@ -1981,9 +2027,37 @@ class PlayState extends MusicBeatState
 			case 'office':
 				if(SONG.song.toLowerCase() == 'transmit'){
 					transmitLights.members[curLight].alpha -= (Conductor.crochet / 1000) * FlxG.elapsed * 1.5;
-				}
-		}
 
+
+					// SCREEN TRANSITION PAPER BULLSHIT ///////////////////////
+					
+					transmitPapers.forEach(function(paper:BGSprite){
+						if(paper.animation.finished){
+							paper.visible = false;
+						}
+					});
+					
+
+
+					var scrollamount = -15;
+					paperworkHell1.y += scrollamount;
+					paperworkHell2.y += scrollamount;
+
+					// Scrolling Paper Bullshit //////////
+					var greater,lesser;
+					if(paperworkHell1.y > paperworkHell2.y){
+						greater = paperworkHell1;
+						lesser = paperworkHell2;
+					}else{
+						greater = paperworkHell2;
+						lesser = paperworkHell1;
+					}
+					if(2000 > greater.y + paperworkHell1.height - FlxG.height/2){
+						trace("Flip");
+						lesser.y = greater.y + paperworkHell1.height;
+					}
+				}
+			}
 		if(!inCutscene) {
 			var lerpVal:Float = CoolUtil.boundTo(elapsed * 2.4, 0, 1);
 			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
@@ -2477,7 +2551,7 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
-	public function getControl(key:String) {
+	public function getControl(key:String){
 		var pressed:Bool = Reflect.getProperty(controls, key);
 		//trace('Control result: ' + pressed);
 		return pressed;
@@ -2743,6 +2817,19 @@ class PlayState extends MusicBeatState
 						}
 
 				}
+			case 'Transmit Stage Change':
+				dad.playAnim('PaperLaser', true);
+				dad.specialAnim = true;
+				FlxG.sound.play(Paths.sound('paperlasernoise'));
+
+				transmitPapers.forEach(function(paper:BGSprite)
+				{
+					paper.visible = true;
+					paper.animation.play('GetReadyPaper', true);
+					paper.x = FlxG.camera.x;
+					paper.y = FlxG.camera.y;
+				});
+
 		}
 		if(!onLua) {
 			callOnLuas('onEvent', [eventName, value1, value2]);
@@ -3699,7 +3786,8 @@ class PlayState extends MusicBeatState
 				watercooler.dance(true);
 				// Do nothing for now
 				if(SONG.song.toLowerCase() == 'transmit'){
-					if (curBeat % 4 == 0)
+						// TRANSMIT LIGHTS ///////////////////////
+					if (curBeat % 4 == 0){
 						{
 							transmitLights.forEach(function(light:BGSprite)
 							{
@@ -3711,7 +3799,9 @@ class PlayState extends MusicBeatState
 							transmitLights.members[curLight].visible = true;
 							transmitLights.members[curLight].alpha = 1;
 						}
+					}
 				}
+
 			case 'school':
 				if(!ClientPrefs.lowQuality) {
 					bgGirls.dance();
