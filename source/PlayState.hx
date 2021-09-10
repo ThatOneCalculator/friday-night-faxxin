@@ -1024,7 +1024,9 @@ class PlayState extends MusicBeatState
 		}
 
 		strumLineNotes.cameras = [camHUD];
-		transmitPapers.cameras = [camHUD];
+		if(SONG.song.toLowerCase() == 'transmit'){
+			transmitPapers.cameras = [camHUD];
+		}
 		grpNoteSplashes.cameras = [camHUD];
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
@@ -2028,8 +2030,6 @@ class PlayState extends MusicBeatState
 			case 'office':
 				if(SONG.song.toLowerCase() == 'transmit'){
 					transmitLights.members[curLight].alpha -= (Conductor.crochet / 1000) * FlxG.elapsed * 1.5;
-
-
 					// SCREEN TRANSITION PAPER BULLSHIT ///////////////////////
 					if(transmitPapers.animation.finished){
 							transmitPapers.visible = false;
@@ -2825,31 +2825,33 @@ class PlayState extends MusicBeatState
 
 				}
 			case 'Transmit Transition':
-				dad.playAnim('PaperLaser', true);
-				dad.specialAnim = true;
-				FlxG.sound.play(Paths.sound('faxnoise'));
+				if(SONG.song.toLowerCase() == 'transmit'){
+					dad.playAnim('PaperLaser', true);
+					dad.specialAnim = true;
+					FlxG.sound.play(Paths.sound('faxnoise'));
 
-				// TransmitPapers
-				transmitPapers.visible = true;
-				transmitPapers.animation.play('GetReadyPaper', true);
+					// TransmitPapers
+					transmitPapers.visible = true;
+					transmitPapers.animation.play('GetReadyPaper', true);
 
-				camFollow.x = 700;
-				isCameraOnForcedPos = true;
-				
+					camFollow.x = 700;
+					isCameraOnForcedPos = true;
+				}
 			case 'Transmit BG Change':
-				gf.visible = false;
-				officeAlpha = 0;
-				overlay.visible = false;
-				watercooler.visible = false;
-				objects.visible = false;
-				shadowgf.visible = false;
-				light.visible = false;
-				vignette.visible = false;
+				if(SONG.song.toLowerCase() == 'transmit'){
+					gf.visible = false;
+					officeAlpha = 0;
+					overlay.visible = false;
+					watercooler.visible = false;
+					objects.visible = false;
+					shadowgf.visible = false;
+					light.visible = false;
+					vignette.visible = false;
 
-				// Paperwork hell bg
-				paperworkHell1.visible = true;
-				paperworkHell2.visible = true;
-
+					// Paperwork hell bg
+					paperworkHell1.visible = true;
+					paperworkHell2.visible = true;
+				}
 		}
 		if(!onLua) {
 			callOnLuas('onEvent', [eventName, value1, value2]);
