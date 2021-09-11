@@ -2835,6 +2835,7 @@ class PlayState extends MusicBeatState
 					transmitPapers.animation.play('GetReadyPaper', true);
 
 					camFollow.x = 700;
+					camFollow.y = boyfriend.y;
 					isCameraOnForcedPos = true;
 				}
 			case 'Transmit BG Change':
