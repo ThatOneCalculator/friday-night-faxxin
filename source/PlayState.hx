@@ -429,7 +429,6 @@ class PlayState extends MusicBeatState
 				objects.setGraphicSize(Std.int(objects.width * 1));
 				objects.alpha = officeAlpha;
 				objects.updateHitbox();
-				add(objects);
 
 
 				// FOREGROUND ///////////////////////////////////////////////////////////////////////////////
@@ -868,6 +867,7 @@ class PlayState extends MusicBeatState
 			add(halloweenWhite);
 		}
 		if (curStage == 'office'){
+			add(objects);
 			if(showOverlay = true){
 				add(overlay);
 			}else{
@@ -2045,6 +2045,21 @@ class PlayState extends MusicBeatState
 						boyfriend.specialAnim = true;
 					}
 
+					// Fax Splode
+					if(dad.animation.curAnim.name == 'explode' && dad.animation.curAnim.curFrame == 6){
+						gf.visible = true;
+						overlay.visible = true;
+						watercooler.visible = true;
+						objects.visible = true;
+						shadowgf.visible = true;
+						light.visible = true;
+						vignette.visible = true;
+
+						// Paperwork hell bg
+						paperworkHell1.visible = false;
+						paperworkHell2.visible = false;
+					}
+
 					// Papers dodge animation
 					if(transmitPapers.animation.curAnim.curFrame == 37){
 						boyfriend.playAnim('dodge', true);
@@ -2856,17 +2871,6 @@ class PlayState extends MusicBeatState
 				if(SONG.song.toLowerCase() == 'transmit'){
 					dad.playAnim('explode', true);
 					dad.specialAnim = true;
-					gf.visible = true;
-					overlay.visible = true;
-					watercooler.visible = true;
-					objects.visible = true;
-					shadowgf.visible = true;
-					light.visible = true;
-					vignette.visible = true;
-
-					// Paperwork hell bg
-					paperworkHell1.visible = false;
-					paperworkHell2.visible = false;
 				}
 		}
 		if(!onLua) {
