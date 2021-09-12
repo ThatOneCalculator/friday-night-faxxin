@@ -70,7 +70,8 @@ class ChartingState extends MusicBeatState
 		['Screen Shake', "Value 1: Camera shake\nValue 2: HUD shake\n\nEvery value works as the following example: \"1, 0.1\".\nThe first number (1) is the duration.\nThe second number (0.05) is the intensity."],
 		['Change Character', "Value 1: Character to change\nValue 2: New character's name\n\nOn Value 1, Boyfriend is 0,\nDad is 1 and Girlfriend is 2"],
 		['Transmit Transition', "Starts the transition for the stage change"],
-		['Transmit BG Change', "Makes Everything invis and changes the stage to paperwork hell"]
+		['Transmit BG Change', "Makes Everything invis and changes the stage to paperwork hell"],
+		['Transmit Revert', "maybe it was all a dream"]
 	];
 
 	var _file:FileReference;

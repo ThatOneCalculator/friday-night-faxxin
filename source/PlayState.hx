@@ -2841,7 +2841,6 @@ class PlayState extends MusicBeatState
 			case 'Transmit BG Change':
 				if(SONG.song.toLowerCase() == 'transmit'){
 					gf.visible = false;
-					officeAlpha = 0;
 					overlay.visible = false;
 					watercooler.visible = false;
 					objects.visible = false;
@@ -2852,6 +2851,22 @@ class PlayState extends MusicBeatState
 					// Paperwork hell bg
 					paperworkHell1.visible = true;
 					paperworkHell2.visible = true;
+				}
+			case 'Transmit Revert':
+				if(SONG.song.toLowerCase() == 'transmit'){
+					dad.playAnim('explode', true);
+					dad.specialAnim = true;
+					gf.visible = true;
+					overlay.visible = true;
+					watercooler.visible = true;
+					objects.visible = true;
+					shadowgf.visible = true;
+					light.visible = true;
+					vignette.visible = true;
+
+					// Paperwork hell bg
+					paperworkHell1.visible = false;
+					paperworkHell2.visible = false;
 				}
 		}
 		if(!onLua) {
