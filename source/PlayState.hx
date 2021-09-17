@@ -199,6 +199,7 @@ class PlayState extends MusicBeatState
 	//var paperworkHell:BGSprite; 
 	var paperworkHell1:BGSprite;
 	var paperworkHell2:BGSprite;
+	var scrollamount = 0;
 
 	public var songScore:Int = 0;
 	public var songHits:Int = 0;
@@ -370,18 +371,17 @@ class PlayState extends MusicBeatState
 				add(buildings);	
 
 				//TRANSMIT LIGHTS
-				if(SONG.song.toLowerCase() == 'transmit'){
-					transmitLights = new FlxTypedGroup<BGSprite>();
-					add(transmitLights);
-					for (i in 0...5)
-					{
-						var light:BGSprite = new BGSprite(weekFolder + '/TransmitWindows/sng3_buildings' + i, xPos, yPos-100, 0.4, 0.4);
-						light.visible = false;
-						light.updateHitbox();
-						light.alpha = officeAlpha;
-						transmitLights.add(light);
-					}
+				transmitLights = new FlxTypedGroup<BGSprite>();
+				add(transmitLights);
+				for (i in 0...5)
+				{
+					var light:BGSprite = new BGSprite(weekFolder + '/TransmitWindows/sng3_buildings' + i, xPos, yPos-100, 0.4, 0.4);
+					light.visible = false;
+					light.updateHitbox();
+					light.alpha = officeAlpha;
+					transmitLights.add(light);
 				}
+
 				// Main Office
 				var office:BGSprite = new BGSprite(weekFolder + '/' + sprOffice, xPos, yPos, 0.9, 0.9);
 				office.setGraphicSize(Std.int(office.width * 1));
@@ -390,21 +390,19 @@ class PlayState extends MusicBeatState
 				add(office);
 
 				// Paperwork Hell
-				if(SONG.song.toLowerCase() == 'transmit'){
-					var paperworkhellscrollspd = 2.2;
+				var paperworkhellscrollspd = 2.2;
 
-					paperworkHell1 = new BGSprite('weekFax/paperworkHellBG', xPos, 1000, paperworkhellscrollspd, paperworkhellscrollspd);
-					paperworkHell1.setGraphicSize(Std.int(paperworkHell1.width * 1));
-					paperworkHell1.x = xPos-100;
-					paperworkHell1.visible = false;
-					add(paperworkHell1);
+				paperworkHell1 = new BGSprite('weekFax/paperworkHellBG', xPos, 1000, paperworkhellscrollspd, paperworkhellscrollspd);
+				paperworkHell1.setGraphicSize(Std.int(paperworkHell1.width * 1));
+				paperworkHell1.x = xPos-100;
+				paperworkHell1.visible = false;
+				add(paperworkHell1);
 
-					paperworkHell2 = new BGSprite('weekFax/paperworkHellBG', xPos, paperworkHell1.height, paperworkhellscrollspd, paperworkhellscrollspd);
-					paperworkHell2.setGraphicSize(Std.int(paperworkHell2.width * 1));
-					paperworkHell2.x = paperworkHell1.x;
-					paperworkHell2.visible = false;
-					add(paperworkHell2);
-				}
+				paperworkHell2 = new BGSprite('weekFax/paperworkHellBG', xPos, paperworkHell1.height, paperworkhellscrollspd, paperworkhellscrollspd);
+				paperworkHell2.setGraphicSize(Std.int(paperworkHell2.width * 1));
+				paperworkHell2.x = paperworkHell1.x;
+				paperworkHell2.visible = false;
+				add(paperworkHell2);
 
 				// BG Fax Shadow
 				var shadowbf:BGSprite = new BGSprite(weekFolder + '/BGshadows', xPos, yPos, 1, 1);
@@ -925,18 +923,16 @@ class PlayState extends MusicBeatState
 		add(grpNoteSplashes);
 
 		// TRANSITION PAPER ////////////////////////////////////////////////////////////////////////////////
-		if(SONG.song.toLowerCase() == 'transmit'){
-			transmitPapers = new BGSprite('weekFax/Papers/PapersSmallerVersion', 0, 0, ['paper cover screen']);
-			transmitPapers.animation.addByPrefix('GetReadyPaper', 'paper cover screen', 24, false);
-			transmitPapers.visible = false;
-			transmitPapers.setGraphicSize(Std.int(transmitPapers.width * 1.25));
-			transmitPapers.updateHitbox();
-			transmitPapers.x = -350;
-			transmitPapers.y = -500;
-			transmitPapers.scrollFactor.set();
-			transmitPapers.animation.pause();
-			add(transmitPapers);
-		}
+		transmitPapers = new BGSprite('weekFax/Papers/PapersSmallerVersion', 0, 0, ['paper cover screen']);
+		transmitPapers.animation.addByPrefix('GetReadyPaper', 'paper cover screen', 24, false);
+		transmitPapers.visible = false;
+		transmitPapers.setGraphicSize(Std.int(transmitPapers.width * 1.25));
+		transmitPapers.updateHitbox();
+		transmitPapers.x = -350;
+		transmitPapers.y = -500;
+		transmitPapers.scrollFactor.set();
+		transmitPapers.animation.pause();
+		add(transmitPapers);
 
 		var splash:NoteSplash = new NoteSplash(100, 100, 0);
 		grpNoteSplashes.add(splash);
@@ -2028,14 +2024,22 @@ class PlayState extends MusicBeatState
 				}
 
 			case 'office':
-				if(SONG.song.toLowerCase() == 'transmit'){
+				if(SONG.song.toLowerCase() == 'transmit' && curStage == 'office'){
 					transmitLights.members[curLight].alpha -= (Conductor.crochet / 1000) * FlxG.elapsed * 1.5;
 					// SCREEN TRANSITION PAPER BULLSHIT ///////////////////////
 					if(transmitPapers.animation.finished){
 							transmitPapers.visible = false;
 					}
-					
-					var scrollamount = -15;
+
+					switch (storyDifficulty){
+						case 0:
+							scrollamount = -2;
+						case 1:
+							scrollamount = -10;
+						case 2:
+							scrollamount = -30;
+					}
+
 					paperworkHell1.y += scrollamount;
 					paperworkHell2.y += scrollamount;
 
@@ -2074,7 +2078,7 @@ class PlayState extends MusicBeatState
 						greater = paperworkHell2;
 						lesser = paperworkHell1;
 					}
-					if(2000 > greater.y + paperworkHell1.height - FlxG.height/2){
+					if(4000 > greater.y + paperworkHell1.height - FlxG.height/2){
 						trace("Flip");
 						lesser.y = greater.y + paperworkHell1.height;
 					}
@@ -2967,6 +2971,8 @@ class PlayState extends MusicBeatState
 		seenCutscene = false;
 		KillNotes();
 
+		
+
 		#if ACHIEVEMENTS_ALLOWED
 		if(achievementObj != null) {
 			return;
@@ -3022,7 +3028,6 @@ class PlayState extends MusicBeatState
 			else
 			{
 				var difficulty:String = '' + CoolUtil.difficultyStuff[storyDifficulty][1];
-
 				trace('LOADING NEXT SONG');
 				trace(PlayState.storyPlaylist[0].toLowerCase() + difficulty);
 
@@ -3038,8 +3043,8 @@ class PlayState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('Lights_Shut_off'));
 				}
 
-				FlxTransitionableState.skipNextTransIn = true;
-				FlxTransitionableState.skipNextTransOut = true;
+				FlxTransitionableState.skipNextTransIn = false;
+				FlxTransitionableState.skipNextTransOut = false;
 
 				prevCamFollow = camFollow;
 				prevCamFollowPos = camFollowPos;
