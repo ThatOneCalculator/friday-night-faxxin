@@ -123,8 +123,8 @@ class TitleState extends MusicBeatState
 		#end
 	}
 
-	var logoBl:FlxSprite;
-	var gfDance:FlxSprite;
+	var logoBl:BGSprite;
+	var gfDance:BGSprite;
 	var danceLeft:Bool = false;
 	var titleText:FlxSprite;
 	var swagShader:ColorSwap = null;
@@ -170,23 +170,22 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		logoBl = new FlxSprite(20, 0);
-		logoBl.frames = Paths.getSparrowAtlas('FaxxinBumpin');
+		logoBl = new BGSprite('FaxxinBumpin', 20, 0, 0, 0, ['logo bumpin']);
 		logoBl.antialiasing = ClientPrefs.globalAntialiasing;
-		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
-		logoBl.animation.play('bump');
 		logoBl.updateHitbox();
+		logoBl.dance(true);
+
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 
 		swagShader = new ColorSwap();
-		gfDance = new FlxSprite(FlxG.width * 0.55, FlxG.height * 0.2);
-		gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
-		gfDance.animation.addByPrefix('gfDance', 'gfDanceTitle', 24, false);
+		gfDance = new BGSprite('gfDanceTitle', FlxG.width * 0.55, FlxG.height * 0.2, 0, 0, ['gfDanceTitle']);
 		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
 		add(gfDance);
+		gfDance.dance(true);
 		gfDance.shader = swagShader.shader;
 		add(logoBl);
+		
 		//logoBl.shader = swagShader.shader;
 
 		titleText = new FlxSprite(100, FlxG.height * 0.8);
@@ -361,9 +360,12 @@ class TitleState extends MusicBeatState
 	{
 		super.beatHit();
 
-		if(logoBl != null) 
-			logoBl.animation.play('bump');
-			gfDance.animation.play('gfDance');
+		if(curBeat % 4 == 0) {
+			if(logoBl != null) 
+				logoBl.dance(true);
+			if(gfDance != null)
+				gfDance.dance(true);
+		}
 
 		if(!closedState) {
 			switch (curBeat)
