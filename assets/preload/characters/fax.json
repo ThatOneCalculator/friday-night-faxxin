@@ -146,10 +146,10 @@
 				1180,
 				650
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "explode",
-			"loop": false,
+			"indices": [],
 			"name": "FaxExplode"
 		}
 	],
@@ -167,8 +167,8 @@
 		70
 	],
 	"camera_position": [
-		0,
-		0
+		-1000,
+		-710
 	],
 	"sing_duration": 6.1,
 	"scale": 1

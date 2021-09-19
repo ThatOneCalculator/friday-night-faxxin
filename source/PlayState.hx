@@ -2058,6 +2058,7 @@ class PlayState extends MusicBeatState
 						shadowgf.visible = true;
 						light.visible = true;
 						vignette.visible = true;
+						
 
 						// Paperwork hell bg
 						paperworkHell1.visible = false;
