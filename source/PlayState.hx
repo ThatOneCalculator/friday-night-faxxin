@@ -2030,18 +2030,26 @@ class PlayState extends MusicBeatState
 					if(transmitPapers.animation.finished){
 							transmitPapers.visible = false;
 					}
-
+					var easyscroll = 2;
+					var normalscroll = 10;
+					var hardscroll = 23;
+					var canonscroll = 40;
 					switch (storyDifficulty){
 						case 0:
-							scrollamount = -2;
+							scrollamount = easyscroll;
 						case 1:
-							scrollamount = -10;
+							scrollamount = normalscroll;
 						case 2:
-							scrollamount = -30;
+							scrollamount = hardscroll;
 					}
 
-					paperworkHell1.y += scrollamount;
-					paperworkHell2.y += scrollamount;
+					if(ClientPrefs.downScroll){
+						paperworkHell1.y += scrollamount;
+						paperworkHell2.y += scrollamount;
+					}else{
+						paperworkHell1.y -= scrollamount;
+						paperworkHell2.y -= scrollamount;
+					}
 
 					//Boyfriend hit by fax anim
 					if(dad.animation.curAnim.name == 'PaperLaser' && dad.animation.curAnim.curFrame == 19){
@@ -2072,6 +2080,7 @@ class PlayState extends MusicBeatState
 					}
 					// Scrolling Paper Bullshit //////////
 					var greater,lesser;
+
 					if(paperworkHell1.y > paperworkHell2.y){
 						greater = paperworkHell1;
 						lesser = paperworkHell2;
@@ -2079,10 +2088,22 @@ class PlayState extends MusicBeatState
 						greater = paperworkHell2;
 						lesser = paperworkHell1;
 					}
-					if(4000 > greater.y + paperworkHell1.height - FlxG.height/2){
-						trace("Flip");
-						lesser.y = greater.y + paperworkHell1.height;
+					
+
+					// scroll direction based on player scroll preference
+					if(!ClientPrefs.downScroll){
+						if(4000 > greater.y + paperworkHell1.height - FlxG.height/2){
+							trace("Flip");
+							lesser.y = greater.y + paperworkHell1.height;
+						}
+					}else{
+						if(-12000 < lesser.y - paperworkHell1.height - FlxG.height/2){
+							trace("Flip DS");
+							greater.y = lesser.y - paperworkHell1.height;
+						}
 					}
+
+
 				}
 			}
 		if(!inCutscene) {
