@@ -200,6 +200,8 @@ class PlayState extends MusicBeatState
 	var paperworkHell1:BGSprite;
 	var paperworkHell2:BGSprite;
 	var scrollamount = 0;
+	var fgPapers1:BGSprite;
+	var fgPapers2:BGSprite;
 
 	public var songScore:Int = 0;
 	public var songHits:Int = 0;
@@ -932,7 +934,19 @@ class PlayState extends MusicBeatState
 		transmitPapers.y = -500;
 		transmitPapers.scrollFactor.set();
 		transmitPapers.animation.pause();
-		add(transmitPapers);
+
+		if(storyDifficulty == 3){
+			// BULLSHIT FG PAPERS
+			fgPapers1 = new BGSprite('weekFax/FGForms', 0, 0, 0, 0);
+			fgPapers1.setGraphicSize(Std.int(fgPapers1.width * 1));
+			fgPapers1.x = 0;
+			fgPapers1.visible = false;
+
+			fgPapers2 = new BGSprite('weekFax/FGForms', 0, 0, 0, 0);
+			fgPapers2.setGraphicSize(Std.int(fgPapers2.width * 1));
+			fgPapers2.x = 90;
+			fgPapers2.visible = false;
+		}
 
 		var splash:NoteSplash = new NoteSplash(100, 100, 0);
 		grpNoteSplashes.add(splash);
@@ -1022,6 +1036,10 @@ class PlayState extends MusicBeatState
 		strumLineNotes.cameras = [camHUD];
 		if(SONG.song.toLowerCase() == 'transmit'){
 			transmitPapers.cameras = [camHUD];
+			if(storyDifficulty == 3){
+				fgPapers1.cameras = [camHUD];
+				fgPapers2.cameras = [camHUD];
+			}
 		}
 		grpNoteSplashes.cameras = [camHUD];
 		notes.cameras = [camHUD];
@@ -1515,6 +1533,12 @@ class PlayState extends MusicBeatState
 
 		notes = new FlxTypedGroup<Note>();
 		add(notes);
+
+		if(SONG.song.toLowerCase() == 'transmit' && storyDifficulty == 3){
+			add(fgPapers1);
+			add(fgPapers2);
+		}
+		add(transmitPapers);
 
 		var noteData:Array<SwagSection>;
 
@@ -2026,14 +2050,18 @@ class PlayState extends MusicBeatState
 			case 'office':
 				if(SONG.song.toLowerCase() == 'transmit' && curStage == 'office'){
 					transmitLights.members[curLight].alpha -= (Conductor.crochet / 1000) * FlxG.elapsed * 1.5;
+
 					// SCREEN TRANSITION PAPER BULLSHIT ///////////////////////
 					if(transmitPapers.animation.finished){
-							transmitPapers.visible = false;
+						transmitPapers.visible = false;
 					}
+
+					var scrollmult = 0.7;
 					var easyscroll = 2;
 					var normalscroll = 10;
 					var hardscroll = 23;
-					var canonscroll = 40;
+					var canonscroll = 35;
+
 					switch (storyDifficulty){
 						case 0:
 							scrollamount = easyscroll;
@@ -2041,15 +2069,28 @@ class PlayState extends MusicBeatState
 							scrollamount = normalscroll;
 						case 2:
 							scrollamount = hardscroll;
+						case 3:
+							scrollamount = canonscroll;
 					}
 
 					if(ClientPrefs.downScroll){
 						paperworkHell1.y += scrollamount;
 						paperworkHell2.y += scrollamount;
+						if(storyDifficulty == 3){
+							fgPapers1.y += scrollamount*scrollmult;
+							fgPapers2.y += scrollamount*scrollmult;
+						}
 					}else{
 						paperworkHell1.y -= scrollamount;
 						paperworkHell2.y -= scrollamount;
+						if(storyDifficulty == 3){
+							fgPapers1.y -= scrollamount*scrollmult;
+							fgPapers2.y -= scrollamount*scrollmult;
+						}
 					}
+
+					//fg papers for canon
+					// storyDifficulty == 3
 
 					//Boyfriend hit by fax anim
 					if(dad.animation.curAnim.name == 'PaperLaser' && dad.animation.curAnim.curFrame == 19){
@@ -2071,6 +2112,10 @@ class PlayState extends MusicBeatState
 						// Paperwork hell bg
 						paperworkHell1.visible = false;
 						paperworkHell2.visible = false;
+						if(storyDifficulty == 3){
+							fgPapers1.visible = false;
+							fgPapers2.visible = false;
+						}
 					}
 
 					// Papers dodge animation
@@ -2088,22 +2133,47 @@ class PlayState extends MusicBeatState
 						greater = paperworkHell2;
 						lesser = paperworkHell1;
 					}
-					
 
 					// scroll direction based on player scroll preference
 					if(!ClientPrefs.downScroll){
-						if(4000 > greater.y + paperworkHell1.height - FlxG.height/2){
+						if(paperworkHell1.height/2 > greater.y + paperworkHell1.height - FlxG.height/2){
 							trace("Flip");
 							lesser.y = greater.y + paperworkHell1.height;
 						}
 					}else{
-						if(-12000 < lesser.y - paperworkHell1.height - FlxG.height/2){
+						if(-((paperworkHell1.height/2)*3) < lesser.y - paperworkHell1.height - FlxG.height/2){
 							trace("Flip DS");
 							greater.y = lesser.y - paperworkHell1.height;
 						}
 					}
 
+					// FG PAPER CANON SCROLL
+					if(storyDifficulty == 3){
+						var greaterfg,lesserfg;
 
+						if(fgPapers1.y > fgPapers2.y){
+							greaterfg = fgPapers1;
+							lesserfg = fgPapers2;
+						}else{
+							greaterfg = fgPapers2;
+							lesserfg = fgPapers1;
+						}
+
+						if(!ClientPrefs.downScroll){
+							if(fgPapers1.height/2 > greaterfg.y + fgPapers1.height - FlxG.height/2){
+								trace("FlipFG");
+								lesserfg.y = greaterfg.y + fgPapers1.height;
+							}
+						}else{
+							if(-((fgPapers1.height/2)*3) < lesserfg.y - fgPapers1.height - FlxG.height/2){
+								trace("FlipFG DS");
+								greaterfg.y = lesserfg.y - fgPapers1.height;
+							}
+						}
+					}
+
+
+					//hahfkofwiago
 				}
 			}
 		if(!inCutscene) {
@@ -2892,6 +2962,10 @@ class PlayState extends MusicBeatState
 					// Paperwork hell bg
 					paperworkHell1.visible = true;
 					paperworkHell2.visible = true;
+					if(storyDifficulty == 3){
+						fgPapers1.visible = true;
+						fgPapers2.visible = true;
+					}
 				}
 			case 'Transmit Revert':
 				if(SONG.song.toLowerCase() == 'transmit'){
@@ -2993,20 +3067,6 @@ class PlayState extends MusicBeatState
 		seenCutscene = false;
 		KillNotes();
 
-		
-
-		#if ACHIEVEMENTS_ALLOWED
-		if(achievementObj != null) {
-			return;
-		} else {
-			var achieve:Int = checkForAchievement([1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15]);
-			if(achieve > -1) {
-				startAchievement(achieve);
-				return;
-			}
-		}
-		#end
-
 		callOnLuas('onEndSong', []);
 		if (SONG.validScore)
 		{
@@ -3026,12 +3086,22 @@ class PlayState extends MusicBeatState
 
 			if (storyPlaylist.length <= 0)
 			{
-				FlxG.sound.playMusic(Paths.music('BrainLeak'));
-
-				transIn = FlxTransitionableState.defaultTransIn;
-				transOut = FlxTransitionableState.defaultTransOut;
-
-				MusicBeatState.switchState(new StoryMenuState());
+				//FlxG.sound.playMusic(Paths.music('BrainLeak'));
+				if(storyDifficulty == 3 && cpuControlled == false && usedPractice == false){
+					if(campaignMisses < 1){
+						MusicBeatState.switchState(new End("end3"));
+					}else{
+						// ENDING 2 (CANON)
+						MusicBeatState.switchState(new End("end2"));
+					}
+				}else{
+					// ENDING 1 (EASY NORMAL HARD)
+					MusicBeatState.switchState(new End("end1"));
+				}
+				if(FlxG.sound.music.fadeTween != null) {
+					FlxG.sound.music.fadeTween.cancel();
+				}
+					FlxG.sound.music.fadeTween = null;
 
 				// if ()
 				StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;
@@ -3334,12 +3404,6 @@ class PlayState extends MusicBeatState
 					}
 				});
 
-				#if ACHIEVEMENTS_ALLOWED
-				var achieve:Int = checkForAchievement([11]);
-				if(achieve > -1) {
-					startAchievement(achieve);
-				}
-				#end
 			} else if(boyfriend.holdTimer > Conductor.stepCrochet * 0.001 * boyfriend.singDuration && boyfriend.animation.curAnim.name.startsWith('sing')
 			&& !boyfriend.animation.curAnim.name.endsWith('miss')) {
 				boyfriend.dance();
@@ -3729,18 +3793,6 @@ class PlayState extends MusicBeatState
 				limoCorpse.visible = false;
 				limoCorpseTwo.visible = false;
 				limoKillingState = 1;
-
-				#if ACHIEVEMENTS_ALLOWED
-				Achievements.henchmenDeath++;
-				var achieve:Int = checkForAchievement([10]);
-				if(achieve > -1) {
-					startAchievement(achieve);
-				} else {
-					FlxG.save.data.henchmenDeath = Achievements.henchmenDeath;
-					FlxG.save.flush();
-				}
-				FlxG.log.add('Deaths: ' + Achievements.henchmenDeath);
-				#end
 			}
 		}
 	}
@@ -3995,59 +4047,18 @@ class PlayState extends MusicBeatState
 		for (i in 0...arrayIDs.length) {
 			if(!Achievements.achievementsUnlocked[arrayIDs[i]][1]) {
 				switch(arrayIDs[i]) {
-					case 1 | 2 | 3 | 4 | 5 | 6 | 7:
+					case 0:
 						if(isStoryMode && campaignMisses + songMisses < 1 && CoolUtil.difficultyString() == 'Hard' &&
 						storyPlaylist.length <= 1 && WeekData.getCurrentWeekNumber() == arrayIDs[i] && !changedDifficulty && !usedPractice) {
 							Achievements.unlockAchievement(arrayIDs[i]);
 							return arrayIDs[i];
-						}
-					case 8:
-						if(ratingPercent < 0.2 && !practiceMode && !cpuControlled) {
+					}
+					case 1:
+						if(isStoryMode && campaignMisses + songMisses < 1 && CoolUtil.difficultyString() == 'Canon' &&
+						storyPlaylist.length <= 1 && WeekData.getCurrentWeekNumber() == arrayIDs[i] && !changedDifficulty && !usedPractice) {
 							Achievements.unlockAchievement(arrayIDs[i]);
 							return arrayIDs[i];
-						}
-					case 9:
-						if(ratingPercent >= 1 && !usedPractice && !cpuControlled) {
-							Achievements.unlockAchievement(arrayIDs[i]);
-							return arrayIDs[i];
-						}
-					case 10:
-						if(Achievements.henchmenDeath >= 100) {
-							Achievements.unlockAchievement(arrayIDs[i]);
-							return arrayIDs[i];
-						}
-					case 11:
-						if(boyfriend.holdTimer >= 20 && !usedPractice) {
-							Achievements.unlockAchievement(arrayIDs[i]);
-							return arrayIDs[i];
-						}
-					case 12:
-						if(!boyfriendIdled && !usedPractice) {
-							Achievements.unlockAchievement(arrayIDs[i]);
-							return arrayIDs[i];
-						}
-					case 13:
-						if(!usedPractice) {
-							var howManyPresses:Int = 0;
-							for (j in 0...keysPressed.length) {
-								if(keysPressed[j]) howManyPresses++;
-							}
-
-							if(howManyPresses <= 2) {
-								Achievements.unlockAchievement(arrayIDs[i]);
-								return arrayIDs[i];
-							}
-						}
-					case 14:
-						if(ClientPrefs.framerate <= 60 && ClientPrefs.lowQuality && !ClientPrefs.globalAntialiasing && !ClientPrefs.imagesPersist) {
-							Achievements.unlockAchievement(arrayIDs[i]);
-							return arrayIDs[i];
-						}
-					case 15:
-						if(SONG.song.toLowerCase() == 'test' && !usedPractice) {
-							Achievements.unlockAchievement(arrayIDs[i]);
-							return arrayIDs[i];
-						}
+					}
 				}
 			}
 		}

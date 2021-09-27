@@ -25,10 +25,10 @@ class CreditsState extends MusicBeatState
 
 	private static var creditsStuff:Array<Dynamic> = [ //Name - Icon name - Description - Link - BG Color
 		['Fax Mod Team'],
-		['Plagueonic',		    'plagueonic',		    'Creator, Animator, Artist and Programmer',			'https://twitter.com/Plagueonic',	    0xFF660066],
-		['tincant',			    'tincant',		        'Co-Creator and Composer',			            	'https://twitter.com/tincant_',         0xFF242542],
-		['ThatOneCalculator',	'thatonecalculator',    'Charter and Additional Programmer',				'https://twitter.com/That1Calculator',	0xFF4498BD],
-		['SnubHero',			'snubhero',		        'Additional Artist and Concepts',		     		'https://twitter.com/snubhero',	        0xFF68AEF4],
+		['Plagueonic',		    'plagueonic',		'Creator, Animator, Artist, Charter and Programmer','https://twitter.com/Plagueonic',	    0xFF660066],
+		['tincant',			    'tincant',		    'Co-Creator and Composer',			            	'https://twitter.com/tincant_',         0xFF242542],
+		['ThatOneCalculator',	'thatonecalculator','Canon Charter, and Additional Programming',		'https://twitter.com/That1Calculator',	0xFF4498BD],
+		['SnubHero',			'snubhero',		    'Additional Artist and Concepts',		     		'https://twitter.com/snubhero',	        0xFF68AEF4],
 		[''],
 		['Psych Engine Team'],
 		['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',					'https://twitter.com/Shadow_Mario_',	0xFFFFDD33],
