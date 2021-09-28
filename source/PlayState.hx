@@ -3096,9 +3096,10 @@ class PlayState extends MusicBeatState
 							// ENDING 2 (CANON)
 							MusicBeatState.switchState(new End("Ending 2"));
 						}
+					}else if(storyDifficulty == 0 | 1 | 2){
+						// ENDING 1 (EASY NORMAL HARD)
+						MusicBeatState.switchState(new End("Ending 1"));
 					}
-					// ENDING 1 (EASY NORMAL HARD)
-					MusicBeatState.switchState(new End("Ending 1"));
 				}else if(cpuControlled == true && usedPractice == true){
 					// LAME ENDING
 					MusicBeatState.switchState(new End("Lame Ending"));
