@@ -1159,7 +1159,7 @@ class PlayState extends MusicBeatState
 		
 		#if desktop
 		// Updating Discord Rich Presence.
-		DiscordClient.changePresence(detailsText, displaySongName + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+		DiscordClient.changePresence(detailsText, displaySongName + " (" + storyDifficultyText + ")", SONG.song.toLowerCase(), iconP2.getCharacter());
 		#end
 		super.create();
 	}
@@ -1506,7 +1506,7 @@ class PlayState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence (with Time Left)
-		DiscordClient.changePresence(detailsText, displaySongName + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength);
+		DiscordClient.changePresence(detailsText, displaySongName + " (" + storyDifficultyText + ")", SONG.song.toLowerCase(), iconP2.getCharacter(), true, songLength);
 		#end
 		setOnLuas('songLength', songLength);
 		callOnLuas('onSongStart', []);
@@ -1863,11 +1863,11 @@ class PlayState extends MusicBeatState
 			#if desktop
 			if (startTimer.finished)
 			{
-				DiscordClient.changePresence(detailsText, displaySongName + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+				DiscordClient.changePresence(detailsText, displaySongName + " (" + storyDifficultyText + ")", SONG.song.toLowerCase(), iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
 			}
 			else
 			{
-				DiscordClient.changePresence(detailsText, displaySongName + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+				DiscordClient.changePresence(detailsText, displaySongName + " (" + storyDifficultyText + ")", SONG.song.toLowerCase(), iconP2.getCharacter());
 			}
 			#end
 		}
@@ -1882,11 +1882,11 @@ class PlayState extends MusicBeatState
 		{
 			if (Conductor.songPosition > 0.0)
 			{
-				DiscordClient.changePresence(detailsText, displaySongName + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+				DiscordClient.changePresence(detailsText, displaySongName + " (" + storyDifficultyText + ")",SONG.song.toLowerCase(), iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
 			}
 			else
 			{
-				DiscordClient.changePresence(detailsText, displaySongName + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+				DiscordClient.changePresence(detailsText, displaySongName + " (" + storyDifficultyText + ")",SONG.song.toLowerCase(), iconP2.getCharacter());
 			}
 		}
 		#end
@@ -1899,7 +1899,7 @@ class PlayState extends MusicBeatState
 		#if desktop
 		if (health > 0 && !paused)
 		{
-			DiscordClient.changePresence(detailsPausedText, displaySongName + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+			DiscordClient.changePresence(detailsPausedText, displaySongName + " (" + storyDifficultyText + ")",SONG.song.toLowerCase(), iconP2.getCharacter());
 		}
 		#end
 
@@ -2226,7 +2226,7 @@ class PlayState extends MusicBeatState
 				}
 			
 				#if desktop
-				DiscordClient.changePresence(detailsPausedText, displaySongName + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+				DiscordClient.changePresence(detailsPausedText, displaySongName + " (" + storyDifficultyText + ")",SONG.song.toLowerCase(), iconP2.getCharacter());
 				#end
 			}
 		}
@@ -2238,7 +2238,7 @@ class PlayState extends MusicBeatState
 			MusicBeatState.switchState(new ChartingState());
 
 			#if desktop
-			DiscordClient.changePresence("Chart Editor", null, null, true);
+			DiscordClient.changePresence("Chart Editor", null, 'icon', null, true);
 			#end
 		}
 
@@ -2373,7 +2373,7 @@ class PlayState extends MusicBeatState
 				
 				#if desktop
 				// Game Over doesn't get his own variable because it's only used here
-				DiscordClient.changePresence("Game Over - " + detailsText, displaySongName + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+				DiscordClient.changePresence("Game Over - " + detailsText, displaySongName + " (" + storyDifficultyText + ")", SONG.song.toLowerCase(), iconP2.getCharacter());
 				#end
 			}
 		}
@@ -3087,16 +3087,24 @@ class PlayState extends MusicBeatState
 			if (storyPlaylist.length <= 0)
 			{
 				//FlxG.sound.playMusic(Paths.music('BrainLeak'));
-				if(storyDifficulty == 3 && cpuControlled == false && usedPractice == false){
-					if(campaignMisses < 1){
-						MusicBeatState.switchState(new End("end3"));
-					}else{
-						// ENDING 2 (CANON)
-						MusicBeatState.switchState(new End("end2"));
+				if(cpuControlled == false && usedPractice == false){
+					if(storyDifficulty == 3){
+						if(campaignMisses < 1){
+							// TRUE ENDING (CANON)
+							MusicBeatState.switchState(new End("True Ending"));
+						}else{
+							// ENDING 2 (CANON)
+							MusicBeatState.switchState(new End("Ending 2"));
+						}
 					}
-				}else{
 					// ENDING 1 (EASY NORMAL HARD)
-					MusicBeatState.switchState(new End("end1"));
+					MusicBeatState.switchState(new End("Ending 1"));
+				}else if(cpuControlled == true && usedPractice == true){
+					// LAME ENDING
+					MusicBeatState.switchState(new End("Lame Ending"));
+				}else if(cpuControlled == false && usedPractice == true){
+					// PRACTICE ENDING
+					MusicBeatState.switchState(new End("Practice Ending"));
 				}
 				if(FlxG.sound.music.fadeTween != null) {
 					FlxG.sound.music.fadeTween.cancel();

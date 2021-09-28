@@ -1,5 +1,6 @@
 package;
 import flixel.*;
+import Discord.DiscordClient;
 
 /**
  * ...
@@ -19,9 +20,15 @@ class End extends MusicBeatState
 	{
 		super.create();
 		
-		var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image("weekFax/" + balls));
+		var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image("weekFax/Endings/" + balls));
 		add(bg);
 		FlxG.sound.playMusic(Paths.music("AbyssalFactory"));
+
+		#if desktop
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("Story Mode", balls, 'icon');
+		#end
+
 	}
 	
 	
@@ -30,7 +37,7 @@ class End extends MusicBeatState
 		super.update(elapsed);
 		
 		if (controls.ACCEPT){
-		FlxG.sound.playMusic(Paths.music("BrainLeak"));
+		//FlxG.sound.playMusic(Paths.music("BrainLeak"));
 			FlxG.switchState(new StoryMenuState());
 		}
 	}
