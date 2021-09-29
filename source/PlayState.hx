@@ -936,16 +936,19 @@ class PlayState extends MusicBeatState
 		transmitPapers.animation.pause();
 
 		if(storyDifficulty == 3){
+			var fgPaperAlpha = 0.85;
 			// BULLSHIT FG PAPERS
 			fgPapers1 = new BGSprite('weekFax/FGForms', 0, 0, 0, 0);
 			fgPapers1.setGraphicSize(Std.int(fgPapers1.width * 1));
 			fgPapers1.x = 0;
 			fgPapers1.visible = false;
+			fgPapers1.alpha = fgPaperAlpha;
 
 			fgPapers2 = new BGSprite('weekFax/FGForms', 0, 0, 0, 0);
 			fgPapers2.setGraphicSize(Std.int(fgPapers2.width * 1));
 			fgPapers2.x = 90;
 			fgPapers2.visible = false;
+			fgPapers2.alpha = fgPaperAlpha;
 		}
 
 		var splash:NoteSplash = new NoteSplash(100, 100, 0);
@@ -2056,7 +2059,7 @@ class PlayState extends MusicBeatState
 						transmitPapers.visible = false;
 					}
 
-					var scrollmult = 0.7;
+					var scrollmult = 0.9;
 					var easyscroll = 2;
 					var normalscroll = 10;
 					var hardscroll = 23;
