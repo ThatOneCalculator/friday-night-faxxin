@@ -36,7 +36,7 @@ class End extends MusicBeatState
 		}
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Story Mode", balls, 'icon');
+		DiscordClient.changePresence("Story Mode", balls, 'ending');
 		#end
 	}
 	
