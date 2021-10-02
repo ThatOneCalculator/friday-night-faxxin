@@ -170,7 +170,7 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		logoBl = new BGSprite('FaxxinBumpin', 20, 0, 0, 0, ['logo bumpin']);
+		logoBl = new BGSprite('FaxxinBumpin', 30, 20, 0, 0, ['logo bumpin']);
 		logoBl.antialiasing = ClientPrefs.globalAntialiasing;
 		logoBl.updateHitbox();
 		logoBl.dance(true);

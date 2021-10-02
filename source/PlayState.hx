@@ -47,6 +47,10 @@ import openfl.media.Video;
 import Achievements;
 import openfl.utils.Assets as OpenFlAssets;
 
+#if sys
+import sys.FileSystem;
+#end
+
 using StringTools;
 
 class PlayState extends MusicBeatState
@@ -301,8 +305,6 @@ class PlayState extends MusicBeatState
 		switch (SONG.song.toLowerCase())
 		{	
 			case 'startup' | 'scan' | 'transmit':
-
-
 
 				curStage = 'office';
 				defaultCamZoom = 0.55;
@@ -1145,7 +1147,9 @@ class PlayState extends MusicBeatState
 				case 'senpai' | 'roses' | 'thorns':
 					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
-
+				case 'startup':
+					trace("tried to find cutscene");
+					videoIntro('introcutscene');		
 				default:
 					startCountdown();
 			}
@@ -1166,7 +1170,7 @@ class PlayState extends MusicBeatState
 		#end
 		super.create();
 	}
-	
+
 	public function reloadHealthBarColors() {
 		healthBar.createFilledBar(FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]),
 			FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]));
@@ -1210,6 +1214,48 @@ class PlayState extends MusicBeatState
 		}
 		char.x += char.positionArray[0];
 		char.y += char.positionArray[1];
+	}
+
+	public function videoIntro(name:String):Void {
+		#if VIDEOS_ALLOWED
+		var foundFile:Bool = false;
+		var fileName:String = #if MODS_ALLOWED Paths.mods('videos/' + name + '.' + Paths.VIDEO_EXT); #else ''; #end
+		#if sys
+		if(FileSystem.exists(fileName)) {
+			foundFile = true;
+		}
+		#end
+
+		if(!foundFile) {
+			fileName = Paths.video(name);
+			#if sys
+			if(FileSystem.exists(fileName)) {
+			#else
+			if(OpenFlAssets.exists(fileName)) {
+			#end
+				foundFile = true;
+			}
+		}
+
+		if(foundFile) {
+			inCutscene = true;
+			var bg = new FlxSprite(-FlxG.width, -FlxG.height).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
+			bg.scrollFactor.set();
+			add(bg);
+
+			(new FlxVideo(fileName)).finishCallback = function() {
+				remove(bg);
+				if (SONG.song.toLowerCase() == 'the-circle')
+					dialogueIntro(dialogue);
+				else
+					startCountdown();
+			}
+			return;
+		} else {
+			FlxG.log.warn('Couldnt find video file: ' + fileName);
+		}
+		#end
+		startCountdown();
 	}
 
 	var dialogueCount:Int = 0;
@@ -2062,7 +2108,7 @@ class PlayState extends MusicBeatState
 					var scrollmult = 0.9;
 					var easyscroll = 2;
 					var normalscroll = 10;
-					var hardscroll = 23;
+					var hardscroll = 25;
 					var canonscroll = 35;
 
 					switch (storyDifficulty){

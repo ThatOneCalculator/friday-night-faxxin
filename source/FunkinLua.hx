@@ -709,6 +709,17 @@ class FunkinLua {
 				lePlayState.dialogueIntro(shit, song);
 			}
 		});
+		Lua_helper.add_callback(lua, "startVideo", function(videoFile:String) {
+			#if VIDEOS_ALLOWED
+			if(FileSystem.exists(Paths.modsVideo(videoFile))) {
+				lePlayState.videoIntro(videoFile);
+			} else {
+				luaTrace('Video file not found: ' + videoFile);
+			}
+			#else
+			lePlayState.startCountdown();
+			#end
+		});
 		call('onCreate', []);
 		#end
 	}
@@ -803,7 +814,16 @@ class FunkinLua {
 		}
 		return FlxEase.linear;
 	}
-	
+	public function luaTrace(text:String, ignoreCheck:Bool = false, deprecated:Bool = false) {
+		#if LUA_ALLOWED
+		if(ignoreCheck || getBool('luaDebugMode')) {
+			if(deprecated && !getBool('luaDeprecatedWarnings')) {
+				return;
+			}
+			trace(text);
+		}
+		#end
+	}
 	public function call(event:String, args:Array<Dynamic>):Dynamic {
 		#if LUA_ALLOWED
 		if(lua == null) {
@@ -855,6 +875,23 @@ class FunkinLua {
 		Lua.setglobal(lua, variable);
 		#end
 	}
+
+	#if LUA_ALLOWED
+	public function getBool(variable:String) {
+		var result:String = null;
+		Lua.getglobal(lua, variable);
+		result = Convert.fromLua(lua, -1);
+		Lua.pop(lua, 1);
+
+		if(result == null) {
+			return false;
+		}
+
+		// YES! FINALLY IT WORKS
+		//trace('variable: ' + variable + ', ' + result);
+		return (result == 'true');
+	}
+	#end
 
 	public function setTweensActive(value:Bool) {
 		#if LUA_ALLOWED
