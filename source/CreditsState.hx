@@ -26,7 +26,7 @@ class CreditsState extends MusicBeatState
 	private static var creditsStuff:Array<Dynamic> = [ //Name - Icon name - Description - Link - BG Color
 		['Fax Mod Team'],
 		['Plagueonic',		    'plagueonic',		'Creator, Animator, Artist, Charter and Programmer','https://twitter.com/Plagueonic',	    0xFF660066],
-		['tincant',			    'tincant',		    'Co-Creator and Composer',			            	'https://twitter.com/tincant_',         0xFF242542],
+		['tincant',			    'tincant',		    'Co-Creator and Composer',			            	'https://tincant.newgrounds.com/',      0xFF242542],
 		['ThatOneCalculator',	'thatonecalculator','Canon Charter',									'https://twitter.com/That1Calculator',	0xFF4498BD],
 		['SnubHero',			'snubhero',		    'Additional Artist and Concepts',		     		'https://twitter.com/snubhero',	        0xFF68AEF4],
 		[''],

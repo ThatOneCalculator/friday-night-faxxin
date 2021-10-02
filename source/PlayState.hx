@@ -3099,7 +3099,7 @@ class PlayState extends MusicBeatState
 							// ENDING 2 (CANON)
 							MusicBeatState.switchState(new End("Ending 2"));
 						}
-					}else if(storyDifficulty == 0 | 1 | 2){
+					}else if(storyDifficulty < 3){
 						// ENDING 1 (EASY NORMAL HARD)
 						MusicBeatState.switchState(new End("Ending 1"));
 					}
