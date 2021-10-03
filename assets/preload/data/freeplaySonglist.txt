@@ -1,4 +1,4 @@
 Startup:fax:0xFF9271FD
 Scan:fax:0xFF9271FD
 Transmit:fax:0xFF9271FD
-nothing-important:plagueonic:0xFF9271FD
+Nothing-Important:plagueonic:0xFF9271FD

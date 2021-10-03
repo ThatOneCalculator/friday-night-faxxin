@@ -1274,13 +1274,13 @@ class PlayState extends MusicBeatState
 			var bg = new FlxSprite(-FlxG.width, -FlxG.height).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
 			bg.scrollFactor.set();
 			add(bg);
-
 			(new FlxVideo(fileName)).finishCallback = function() {
 				remove(bg);
-				if (SONG.song.toLowerCase() == 'the-circle')
-					dialogueIntro(dialogue);
-				else
+				if(endingSong) {
+					endSong();
+				} else {
 					startCountdown();
+				}
 			}
 			return;
 		} else {

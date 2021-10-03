@@ -5,7 +5,7 @@ import Discord.DiscordClient;
 /**
  * ...
  * @author bbpanzu
- * THANK YOU BBPANZU :pray: !!
+ * THANK YOU BBPANZU !!
  */
 class End extends MusicBeatState
 {
