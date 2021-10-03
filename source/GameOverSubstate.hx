@@ -21,6 +21,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	public function new(x:Float, y:Float, camX:Float, camY:Float)
 	{
+		FlxG.camera.bgColor = 0xFF000000;
 		var daBf:String = '';
 		switch (PlayState.curStage)
 		{

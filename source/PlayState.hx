@@ -375,15 +375,17 @@ class PlayState extends MusicBeatState
 				add(buildings);	
 
 				//TRANSMIT LIGHTS
-				transmitLights = new FlxTypedGroup<BGSprite>();
-				add(transmitLights);
-				for (i in 0...5)
-				{
-					var light:BGSprite = new BGSprite(weekFolder + '/TransmitWindows/sng3_buildings' + i, xPos, yPos-100, 0.4, 0.4);
-					light.visible = false;
-					light.updateHitbox();
-					light.alpha = officeAlpha;
-					transmitLights.add(light);
+				if(!ClientPrefs.lowQuality){
+					transmitLights = new FlxTypedGroup<BGSprite>();
+					add(transmitLights);
+					for (i in 0...5)
+					{
+						var light:BGSprite = new BGSprite(weekFolder + '/TransmitWindows/sng3_buildings' + i, xPos, yPos-100, 0.4, 0.4);
+						light.visible = false;
+						light.updateHitbox();
+						light.alpha = officeAlpha;
+						transmitLights.add(light);
+					}
 				}
 
 				// Main Office
@@ -434,17 +436,20 @@ class PlayState extends MusicBeatState
 
 
 				// FOREGROUND ///////////////////////////////////////////////////////////////////////////////
-				// Vignette
-				vignette = new BGSprite(weekFolder + '/' + sprVignette, xPos, yPos, 0.9, 0.9);
-				vignette.setGraphicSize(Std.int(vignette.width * 1));
-				vignette.updateHitbox();
-
-				// Light
-				light = new BGSprite(weekFolder + '/' + sprLight, xPos, yPos+100, 0.9, 0.9);
-				light.setGraphicSize(Std.int(light.width * 1));
-				light.alpha = officeAlpha;
-				light.blend = BlendMode.ADD;
-				light.updateHitbox();
+				
+				if(!ClientPrefs.lowQuality){
+					// Vignette
+					vignette = new BGSprite(weekFolder + '/' + sprVignette, xPos, yPos, 0.9, 0.9);
+					vignette.setGraphicSize(Std.int(vignette.width * 1));
+					vignette.updateHitbox();
+				
+					// Light
+					light = new BGSprite(weekFolder + '/' + sprLight, xPos, yPos+100, 0.9, 0.9);
+					light.setGraphicSize(Std.int(light.width * 1));
+					light.alpha = officeAlpha;
+					light.blend = BlendMode.ADD;
+					light.updateHitbox();
+				}
 
 				// Overlay
 				overlay = new BGSprite(weekFolder + '/' + sprOverlay, xPos, yPos, 0.9, 0.9);
@@ -452,7 +457,28 @@ class PlayState extends MusicBeatState
 				overlay.alpha = overlayAlpha*officeAlpha;
 				overlay.blend = overlayBlend;
 				overlay.updateHitbox();
-				
+
+			case 'nothing-important':
+
+				curStage = 'nothing';
+				defaultCamZoom = 0.6;
+
+				//dont worry about it
+				var xPos = 200;
+				var fntSize = 24;
+				var text:FlxText = new FlxText(xPos,170,0,"THANK YOU FOR PLAYING THE MOD, I HOPE YOU ENJOYED", fntSize, true);
+				text.setFormat(Paths.font("impact.ttf"), 60, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				text.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, 3, 1);
+				text.scrollFactor.set(0.3, 0.3);
+				add(text);
+
+				var text2:FlxText = new FlxText(xPos,700,0,"-PLAGUEONIC (MOD DEV, ALSO I MADE THIS SONG :D )", fntSize, true);
+				text2.setFormat(Paths.font("impact.ttf"), 60, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				text2.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, 3, 1);
+				text2.scrollFactor.set(0.3, 0.3);
+				add(text2);
+
+				FlxG.camera.bgColor = 0xFF3C3C3C;
 				
 			case 'spookeez' | 'south' | 'monster':
 				curStage = 'spooky';
@@ -817,6 +843,10 @@ class PlayState extends MusicBeatState
 		gf.alpha = officeAlpha;
 		gfGroup.add(gf);
 
+		if(curStage == 'nothing'){
+			gf.visible = false;
+		}
+
 		dad = new Character(DAD_X, DAD_Y, SONG.player2);
 		dad.x += dad.positionArray[0];
 		dad.y += dad.positionArray[1];
@@ -875,8 +905,10 @@ class PlayState extends MusicBeatState
 			}else{
 				  //do nothing
 			}
-			add(vignette);
-			add(light);
+			if(!ClientPrefs.lowQuality){
+				add(vignette);
+				add(light);
+			}
 		}
 
 		var lowercaseSong:String = SONG.song.toLowerCase();
@@ -2098,14 +2130,15 @@ class PlayState extends MusicBeatState
 
 			case 'office':
 				if(SONG.song.toLowerCase() == 'transmit' && curStage == 'office'){
-					transmitLights.members[curLight].alpha -= (Conductor.crochet / 1000) * FlxG.elapsed * 1.5;
-
+					if(!ClientPrefs.lowQuality){
+						transmitLights.members[curLight].alpha -= (Conductor.crochet / 1000) * FlxG.elapsed * 1.5;
+					}
 					// SCREEN TRANSITION PAPER BULLSHIT ///////////////////////
 					if(transmitPapers.animation.finished){
 						transmitPapers.visible = false;
 					}
 
-					var scrollmult = 0.9;
+					var scrollmult = 1.5;
 					var easyscroll = 2;
 					var normalscroll = 10;
 					var hardscroll = 25;
@@ -2154,9 +2187,10 @@ class PlayState extends MusicBeatState
 						watercooler.visible = true;
 						objects.visible = true;
 						shadowgf.visible = true;
-						light.visible = true;
-						vignette.visible = true;
-						
+						if(!ClientPrefs.lowQuality){
+							light.visible = true;
+							vignette.visible = true;
+						}
 
 						// Paperwork hell bg
 						paperworkHell1.visible = false;
@@ -3005,8 +3039,10 @@ class PlayState extends MusicBeatState
 					watercooler.visible = false;
 					objects.visible = false;
 					shadowgf.visible = false;
-					light.visible = false;
-					vignette.visible = false;
+					if(!ClientPrefs.lowQuality){
+						light.visible = false;
+						vignette.visible = false;
+					}
 
 					// Paperwork hell bg
 					paperworkHell1.visible = true;
@@ -3968,15 +4004,17 @@ class PlayState extends MusicBeatState
 						// TRANSMIT LIGHTS ///////////////////////
 					if (curBeat % 4 == 0){
 						{
-							transmitLights.forEach(function(light:BGSprite)
-							{
-								light.visible = false;
-							});
-		
-							curLight = FlxG.random.int(0, transmitLights.length - 1, [curLight]);
-		
-							transmitLights.members[curLight].visible = true;
-							transmitLights.members[curLight].alpha = 1;
+							if(!ClientPrefs.lowQuality){
+								transmitLights.forEach(function(light:BGSprite)
+								{
+									light.visible = false;
+								});
+			
+								curLight = FlxG.random.int(0, transmitLights.length - 1, [curLight]);
+			
+								transmitLights.members[curLight].visible = true;
+								transmitLights.members[curLight].alpha = 1;
+							}
 						}
 					}
 				}

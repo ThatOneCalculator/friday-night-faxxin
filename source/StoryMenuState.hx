@@ -68,6 +68,7 @@ class StoryMenuState extends MusicBeatState
 
 	override function create()
 	{
+		FlxG.camera.bgColor = 0xFF000000;
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 

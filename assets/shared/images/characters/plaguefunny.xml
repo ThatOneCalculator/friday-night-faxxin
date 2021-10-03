@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="plaguefunny.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="PlagueIdle instance 10000" x="0" y="0" width="258" height="192" frameX="0" frameY="-27" frameWidth="258" frameHeight="219"/>
+	<SubTexture name="PlagueIdle instance 10001" x="0" y="0" width="258" height="192" frameX="0" frameY="-27" frameWidth="258" frameHeight="219"/>
+	<SubTexture name="PlagueIdle instance 10002" x="274" y="0" width="245" height="196" frameX="-11" frameY="-12" frameWidth="258" frameHeight="219"/>
+	<SubTexture name="PlagueIdle instance 10003" x="274" y="0" width="245" height="196" frameX="-11" frameY="-12" frameWidth="258" frameHeight="219"/>
+	<SubTexture name="PlagueIdle instance 10004" x="535" y="0" width="236" height="203" frameX="-12" frameY="0" frameWidth="258" frameHeight="219"/>
+	<SubTexture name="PlagueIdle instance 10005" x="535" y="0" width="236" height="203" frameX="-12" frameY="0" frameWidth="258" frameHeight="219"/>
+	<SubTexture name="PlagueIdle instance 10006" x="0" y="219" width="238" height="209" frameX="-8" frameY="-1" frameWidth="258" frameHeight="219"/>
+	<SubTexture name="PlagueIdle instance 10007" x="0" y="219" width="238" height="209" frameX="-8" frameY="-1" frameWidth="258" frameHeight="219"/>
+	<SubTexture name="PlagueIdle instance 10008" x="254" y="219" width="239" height="207" frameX="-8" frameY="-3" frameWidth="258" frameHeight="219"/>
+	<SubTexture name="PlagueIdle instance 10009" x="254" y="219" width="239" height="207" frameX="-8" frameY="-3" frameWidth="258" frameHeight="219"/>
+	<SubTexture name="PlagueIdle instance 10010" x="509" y="219" width="235" height="207" frameX="-11" frameY="-3" frameWidth="258" frameHeight="219"/>
+	<SubTexture name="PlagueIdle instance 10011" x="509" y="219" width="235" height="207" frameX="-11" frameY="-3" frameWidth="258" frameHeight="219"/>
+	<SubTexture name="PlagueIdle instance 10012" x="760" y="219" width="238" height="207" frameX="-8" frameY="-4" frameWidth="258" frameHeight="219"/>
+	<SubTexture name="PlagueIdle instance 10013" x="760" y="219" width="238" height="207" frameX="-8" frameY="-4" frameWidth="258" frameHeight="219"/>
+	<SubTexture name="PlagueNoteDown instance 10000" x="0" y="444" width="279" height="234" frameX="0" frameY="-12" frameWidth="279" frameHeight="246"/>
+	<SubTexture name="PlagueNoteDown instance 10001" x="0" y="444" width="279" height="234" frameX="0" frameY="-12" frameWidth="279" frameHeight="246"/>
+	<SubTexture name="PlagueNoteDown instance 10002" x="295" y="444" width="266" height="224" frameX="-3" frameY="0" frameWidth="279" frameHeight="246"/>
+	<SubTexture name="PlagueNoteDown instance 10003" x="295" y="444" width="266" height="224" frameX="-3" frameY="0" frameWidth="279" frameHeight="246"/>
+	<SubTexture name="PlagueNoteLeft instance 10000" x="577" y="444" width="289" height="287" frameX="0" frameY="0" frameWidth="301" frameHeight="287"/>
+	<SubTexture name="PlagueNoteLeft instance 10001" x="577" y="444" width="289" height="287" frameX="0" frameY="0" frameWidth="301" frameHeight="287"/>
+	<SubTexture name="PlagueNoteLeft instance 10002" x="0" y="747" width="269" height="254" frameX="-32" frameY="-24" frameWidth="301" frameHeight="287"/>
+	<SubTexture name="PlagueNoteLeft instance 10003" x="0" y="747" width="269" height="254" frameX="-32" frameY="-24" frameWidth="301" frameHeight="287"/>
+	<SubTexture name="PlagueNoteRight instance 10000" x="285" y="747" width="296" height="293" frameX="-22" frameY="0" frameWidth="318" frameHeight="293"/>
+	<SubTexture name="PlagueNoteRight instance 10001" x="285" y="747" width="296" height="293" frameX="-22" frameY="0" frameWidth="318" frameHeight="293"/>
+	<SubTexture name="PlagueNoteRight instance 10002" x="597" y="747" width="276" height="268" frameX="0" frameY="-14" frameWidth="318" frameHeight="293"/>
+	<SubTexture name="PlagueNoteRight instance 10003" x="597" y="747" width="276" height="268" frameX="0" frameY="-14" frameWidth="318" frameHeight="293"/>
+	<SubTexture name="PlagueNoteUp instance 10000" x="0" y="1056" width="229" height="309" frameX="-29" frameY="0" frameWidth="288" frameHeight="314"/>
+	<SubTexture name="PlagueNoteUp instance 10001" x="0" y="1056" width="229" height="309" frameX="-29" frameY="0" frameWidth="288" frameHeight="314"/>
+	<SubTexture name="PlagueNoteUp instance 10002" x="245" y="1056" width="288" height="231" frameX="0" frameY="-83" frameWidth="288" frameHeight="314"/>
+	<SubTexture name="PlagueNoteUp instance 10003" x="245" y="1056" width="288" height="231" frameX="0" frameY="-83" frameWidth="288" frameHeight="314"/>
+</TextureAtlas>

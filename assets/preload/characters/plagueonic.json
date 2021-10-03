@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				1,
+				0
+			],
+			"loop": false,
+			"anim": "idle",
+			"fps": 24,
+			"name": "PlagueIdle",
+			"indices": []
+		},
+		{
+			"offsets": [
+				5,
+				137
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "PlagueNoteUp"
+		},
+		{
+			"offsets": [
+				-40,
+				70
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "PlagueNoteRight"
+		},
+		{
+			"offsets": [
+				90,
+				50
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "PlagueNoteLeft"
+		},
+		{
+			"offsets": [
+				14,
+				-40
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "PlagueNoteDown"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/plaguefunny",
+	"position": [
+		250,
+		390
+	],
+	"healthicon": "plagueonic",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		255,
+		111
+	],
+	"camera_position": [
+		-50,
+		20
+	],
+	"sing_duration": 4,
+	"scale": 1.2
+}

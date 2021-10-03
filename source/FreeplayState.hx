@@ -52,6 +52,7 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		FlxG.camera.bgColor = 0xFF000000;
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));

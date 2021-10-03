@@ -50,6 +50,7 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
+		FlxG.camera.bgColor = 0xFF000000;
 		#if (polymod && !html5)
 		if (sys.FileSystem.exists('mods/')) {
 			var folders:Array<String> = [];
@@ -377,11 +378,11 @@ class TitleState extends MusicBeatState
 				addMoreText('tincant');
 			// credTextShit.visible = true;
 			case 7:
-				addMoreText('ThatOneCalculator');
+				addMoreText('SnubHero');
 			// credTextShit.text += '\npresent...';
 			// credTextShit.addText();
 			case 10:
-				addMoreText('SnubHero');
+				addMoreText('ThatOneCalculator');
 			case 13:
 				addMoreText('Present');
 			case 16:

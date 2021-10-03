@@ -5,7 +5,7 @@ class WeekData {
 	//Go to FreeplayState.hx and add the head icons
 	//Go to StoryMenuState.hx and add the characters/backgrounds
 	public static var songsNames:Array<Dynamic> = [
-		['Startup', 'Scan', 'Transmit']				
+		['Startup', 'Scan', 'Transmit']	
 	];
 
 	// Custom week number, used for your week's score not being overwritten by a new vanilla week when the game updates
