@@ -33,6 +33,8 @@ class End extends MusicBeatState
 				FlxG.sound.play(Paths.sound("botplayending"));
 			case "Practice Ending":
 				FlxG.sound.playMusic(Paths.music("Ending_practice"));
+			case "Ending 2":
+				FlxG.sound.playMusic(Paths.music("Ending_canon"));
 		}
 		#if desktop
 		// Updating Discord Rich Presence
