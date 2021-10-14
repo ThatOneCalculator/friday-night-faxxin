@@ -11,12 +11,12 @@ using StringTools;
 
 class Achievements {
 	public static var achievementsStuff:Array<Dynamic> = [ //Name, Description, Hidden achievement
-		["Aurea Fax Machina",	"Beat Week Fax on Hard with no Misses.", 				    false],
+		["Aurea Fax Machina",	"Beat The Mod",							 				    false],
 		["Faxus Supremeus",		"Beat Week Fax on Canon with no Misses.",			   		false]
 	];
 
 	public static var achievementsUnlocked:Array<Dynamic> = [ //Save string and Achievement tag + is it unlocked?
-		['weekfax_nomiss', false],      	//0
+		['weekfax_canon_beat', false],      	//0
 		['weekfax_nomiss_canon', false]		//1
 	];
 

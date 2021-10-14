@@ -478,6 +478,18 @@ class PlayState extends MusicBeatState
 				text2.scrollFactor.set(0.3, 0.3);
 				add(text2);
 
+				new FlxTimer().start(16.3, function(tmr:FlxTimer){
+					text.text = "NO";
+					text2.text = "I WILL NOT MAKE YOUR FNF MOD";
+					text.size = 100;
+					text2.size = 100;
+					text.x = 450;
+					text.y = 200;
+					text2.x = -150;
+					text.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, 5, 1);
+					text2.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, 5, 1);
+				});
+
 				FlxG.camera.bgColor = 0xFF3C3C3C;
 				
 			case 'spookeez' | 'south' | 'monster':
@@ -969,7 +981,7 @@ class PlayState extends MusicBeatState
 		transmitPapers.scrollFactor.set();
 		transmitPapers.animation.pause();
 
-		if(storyDifficulty == 3){
+		if(storyDifficulty == 2){
 			var fgPaperAlpha = 0.85;
 			// BULLSHIT FG PAPERS
 			fgPapers1 = new BGSprite('weekFax/FGForms', 0, 0, 0, 0);
@@ -1073,7 +1085,7 @@ class PlayState extends MusicBeatState
 		strumLineNotes.cameras = [camHUD];
 		if(SONG.song.toLowerCase() == 'transmit'){
 			transmitPapers.cameras = [camHUD];
-			if(storyDifficulty == 3){
+			if(storyDifficulty == 2){
 				fgPapers1.cameras = [camHUD];
 				fgPapers2.cameras = [camHUD];
 			}
@@ -1615,7 +1627,7 @@ class PlayState extends MusicBeatState
 		notes = new FlxTypedGroup<Note>();
 		add(notes);
 
-		if(SONG.song.toLowerCase() == 'transmit' && storyDifficulty == 3){
+		if(SONG.song.toLowerCase() == 'transmit' && storyDifficulty == 2){
 			add(fgPapers1);
 			add(fgPapers2);
 		}
@@ -2138,11 +2150,10 @@ class PlayState extends MusicBeatState
 						transmitPapers.visible = false;
 					}
 
-					var scrollmult = 1.5;
+					var scrollmult = 2;
 					var easyscroll = 2;
-					var normalscroll = 10;
-					var hardscroll = 25;
-					var canonscroll = 35;
+					var normalscroll = 15;
+					var hardscroll = 35;
 
 					switch (storyDifficulty){
 						case 0:
@@ -2151,29 +2162,25 @@ class PlayState extends MusicBeatState
 							scrollamount = normalscroll;
 						case 2:
 							scrollamount = hardscroll;
-						case 3:
-							scrollamount = canonscroll;
 					}
 
 					if(ClientPrefs.downScroll){
 						paperworkHell1.y += scrollamount;
 						paperworkHell2.y += scrollamount;
-						if(storyDifficulty == 3){
+						if(storyDifficulty == 2){
 							fgPapers1.y += scrollamount*scrollmult;
 							fgPapers2.y += scrollamount*scrollmult;
 						}
 					}else{
 						paperworkHell1.y -= scrollamount;
 						paperworkHell2.y -= scrollamount;
-						if(storyDifficulty == 3){
+						if(storyDifficulty == 2){
 							fgPapers1.y -= scrollamount*scrollmult;
 							fgPapers2.y -= scrollamount*scrollmult;
 						}
 					}
 
-					//fg papers for canon
-					// storyDifficulty == 3
-
+					//fg papers for hard
 					//Boyfriend hit by fax anim
 					if(dad.animation.curAnim.name == 'PaperLaser' && dad.animation.curAnim.curFrame == 19){
 						boyfriend.playAnim('hurt', true);
@@ -2195,7 +2202,7 @@ class PlayState extends MusicBeatState
 						// Paperwork hell bg
 						paperworkHell1.visible = false;
 						paperworkHell2.visible = false;
-						if(storyDifficulty == 3){
+						if(storyDifficulty == 2){
 							fgPapers1.visible = false;
 							fgPapers2.visible = false;
 						}
@@ -2231,7 +2238,7 @@ class PlayState extends MusicBeatState
 					}
 
 					// FG PAPER CANON SCROLL
-					if(storyDifficulty == 3){
+					if(storyDifficulty == 2){
 						var greaterfg,lesserfg;
 
 						if(fgPapers1.y > fgPapers2.y){
@@ -2642,6 +2649,7 @@ class PlayState extends MusicBeatState
 									default:
 										health -= 0.0475; //For testing purposes
 										songMisses++;
+										FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 										vocals.volume = 0;
 										RecalculateRating();
 
@@ -3047,7 +3055,7 @@ class PlayState extends MusicBeatState
 					// Paperwork hell bg
 					paperworkHell1.visible = true;
 					paperworkHell2.visible = true;
-					if(storyDifficulty == 3){
+					if(storyDifficulty == 2){
 						fgPapers1.visible = true;
 						fgPapers2.visible = true;
 					}
@@ -3173,7 +3181,7 @@ class PlayState extends MusicBeatState
 			{
 				//FlxG.sound.playMusic(Paths.music('BrainLeak'));
 				if(cpuControlled == false && usedPractice == false){
-					if(storyDifficulty == 3){
+					if(storyDifficulty == 2){
 						if(campaignMisses < 1){
 							// TRUE ENDING (CANON)
 							MusicBeatState.switchState(new End("True Ending"));
@@ -3181,7 +3189,7 @@ class PlayState extends MusicBeatState
 							// ENDING 2 (CANON)
 							MusicBeatState.switchState(new End("Ending 2"));
 						}
-					}else if(storyDifficulty < 3){
+					}else if(storyDifficulty < 2){
 						// ENDING 1 (EASY NORMAL HARD)
 						MusicBeatState.switchState(new End("Ending 1"));
 					}
@@ -4144,14 +4152,14 @@ class PlayState extends MusicBeatState
 			if(!Achievements.achievementsUnlocked[arrayIDs[i]][1]) {
 				switch(arrayIDs[i]) {
 					case 0:
-						if(isStoryMode && campaignMisses + songMisses < 1 && CoolUtil.difficultyString() == 'Hard' &&
-						storyPlaylist.length <= 1 && WeekData.getCurrentWeekNumber() == arrayIDs[i] && !changedDifficulty && !usedPractice) {
+						if(isStoryMode && CoolUtil.difficultyString() == 'Hard' &&
+						storyPlaylist.length <= 1 && WeekData.getCurrentWeekNumber() == 0 && !changedDifficulty && !usedPractice) {
 							Achievements.unlockAchievement(arrayIDs[i]);
 							return arrayIDs[i];
 					}
 					case 1:
-						if(isStoryMode && campaignMisses + songMisses < 1 && CoolUtil.difficultyString() == 'Canon' &&
-						storyPlaylist.length <= 1 && WeekData.getCurrentWeekNumber() == arrayIDs[i] && !changedDifficulty && !usedPractice) {
+						if(isStoryMode && campaignMisses + songMisses < 1 && CoolUtil.difficultyString() == 'Hard' &&
+						storyPlaylist.length <= 1 && WeekData.getCurrentWeekNumber() == 0 && !changedDifficulty && !usedPractice) {
 							Achievements.unlockAchievement(arrayIDs[i]);
 							return arrayIDs[i];
 					}

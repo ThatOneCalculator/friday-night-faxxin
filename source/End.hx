@@ -48,6 +48,12 @@ class End extends MusicBeatState
 		super.update(elapsed);
 		
 		if (controls.ACCEPT){
+			if(balls == "True Ending"){
+				Achievements.unlockAchievement(1);
+			}
+			if(balls == "Ending 1" || balls == "Ending 2"){
+				Achievements.unlockAchievement(0);
+			}
 			if(balls == "Lame Ending"){
 				FlxG.sound.playMusic(Paths.music("Ending_butyoucheated"));
 			}
