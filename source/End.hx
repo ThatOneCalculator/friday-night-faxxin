@@ -25,8 +25,8 @@ class End extends MusicBeatState
 		add(bg);
 
 		switch(balls){
-			default:
-				FlxG.sound.playMusic(Paths.music("AbyssalFactory"));
+			case "Ending 1":
+				FlxG.sound.playMusic(Paths.music("Ending_1"));
 			case "True Ending":
 				FlxG.sound.playMusic(Paths.music("Ending_True"));
 			case "Lame Ending":

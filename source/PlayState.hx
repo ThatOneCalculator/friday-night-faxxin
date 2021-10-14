@@ -2150,9 +2150,9 @@ class PlayState extends MusicBeatState
 						transmitPapers.visible = false;
 					}
 
-					var scrollmult = 2;
-					var easyscroll = 2;
-					var normalscroll = 15;
+					var scrollmult = 2.5;
+					var easyscroll = 15;
+					var normalscroll = 30;
 					var hardscroll = 35;
 
 					switch (storyDifficulty){
