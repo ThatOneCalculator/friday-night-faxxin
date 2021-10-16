@@ -28,7 +28,7 @@ class CreditsState extends MusicBeatState
 		['Plagueonic',		    'plagueonic',		'Creator, Animator, Artist, Charter and Programmer','https://twitter.com/Plagueonic',	    0xFF660066],
 		['tincant',			    'tincant',		    'Co-Creator and Composer',			            	'https://tincant.newgrounds.com/',      0xFF242542],
 		['SnubHero',			'snubhero',		    'Additional Art and Concepts',		     			'https://twitter.com/snubhero',	        0xFF68AEF4],
-		['ThatOneCalculator',	'thatonecalculator','Open source manager, and Advisor',					'https://twitter.com/That1Calculator',	0xFF4498BD],
+		['ThatOneCalculator',	'thatonecalculator','Additional Programming, Open Source Management, Code Advisory', 'https://t1c.dev',	0xFF4498BD],
 		[''],
 		['Special Thanks'],
 		['bbpanzu',				'bbpanzu'		   ,'Inspiration. And wrote End.hx which I modified', 	'https://twitter.com/bbsub3',			0xFF389A58],

@@ -12,5 +12,5 @@
 ### Credits:
 - [Plagueonic](https://twitter.com/Plagueonic): Art, animation, programming
 - [Tincant](https://twitter.com/tincant_): Music
-- [ThatOneCalculator](https://t1c.dev): Charting, additional programming, open source management
+- [ThatOneCalculator](https://t1c.dev): Additional programming, open source management, code advisory
 - Snub: Additional art
