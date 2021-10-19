@@ -36,10 +36,10 @@ class DiscordClient
 	static function onReady()
 	{
 		DiscordRpc.presence({
-			details: "In the Menus",
+			details: "Ready to fax!",
 			state: null,
 			largeImageKey: 'icon',
-			largeImageText: "Friday Night Faxxin'"
+			largeImageText: "Friday Night Faxxin' v" + MainMenuState.modVersion,
 		});
 	}
 
@@ -75,7 +75,7 @@ class DiscordClient
 			details: details,
 			state: state,
 			largeImageKey: largeImageKey,
-			largeImageText: "Friday Night Faxxin' v " + MainMenuState.modVersion,
+			largeImageText: "Friday Night Faxxin' v" + MainMenuState.modVersion,
 			smallImageKey : smallImageKey,
 			// Obtained times are in milliseconds so they are divided so Discord can use it
 			startTimestamp : Std.int(startTimestamp / 1000),
