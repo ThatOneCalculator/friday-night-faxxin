@@ -1,6 +1,6 @@
 package;
 import flixel.*;
-#if desktop
+#if desktophaxe
 import Discord.DiscordClient;
 #end
 /**
