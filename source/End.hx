@@ -1,7 +1,8 @@
 package;
 import flixel.*;
+#if desktop
 import Discord.DiscordClient;
-
+#end
 /**
  * ...
  * @author bbpanzu
